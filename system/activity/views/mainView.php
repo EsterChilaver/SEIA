@@ -246,64 +246,55 @@ document.body.onload=function(){
                 <div class="col">
 
                     
-                    <ul class="pagination">
-                        <?php
-                            if($num_pages <=1)
-                            {
-                                ?>
-                                <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
-                                <li class="page-item  disabled"><a class="page-link" href="#" >1</a></li>
-                                <li class="page-item disabled"><a class="page-link" href="#">Próxima</a></li>
+                <ul class="pagination">
+                                <!--botton previous -->
                                 <?php
-                            }
-                            else
-                            {
-                                if(($data['page']-1) <=0)
-                                {?>
+                                if ($num_pages <= 1) {
+                                ?>
                                     <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
-                                    <?php
-                                }
-                                else
-                                {?>
-                                    <li class="page-item "><a class="page-link" href="index.php?rep=<?php echo $repository;?>&query=<?php echo $query; ?>&page=<?php echo ($data['page']-1);?>">Anterior</a></li>
-                                    <?php
-                                    
-                                }
-                                $i = 0;
-                                for($i=0; $i < $num_pages; $i++)
-                                {
-                                    if( ($data['page']-1) == $i)
-                                    {
-                                        //curr page
-                                        ?>
-                                        <li class="page-item disabled"><a class="page-link" href="#"><?php echo ($i +1);?></a></li>
-                                        <?php
-                                    }
-                                    else
-                                    {
-                                         ?>
-                                        <li class="page-item"><a class="page-link" href="index.php?rep=<?php echo $repository;?>&query=<?php echo $query; ?>&page=<?php echo ($i +1);?>"><?php echo ($i +1);?></a></li>
-                                        <?php
-                                    }
-                                }
-                                if(($data['page']) >= $num_pages)
-                                {?>
+                                    <li class="page-item  disabled"><a class="page-link" href="#">1</a></li>
                                     <li class="page-item disabled"><a class="page-link" href="#">Próxima</a></li>
+                                <?php
+                                } else {
+                                    if (($data['page'] - 1) <= 0) { ?>
+                                        <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
                                     <?php
-                                }
-                                else
-                                {?>
-                                    <li class="page-item "><a class="page-link" href="index.php?rep=<?php echo $repository;?>&query=<?php echo $query; ?>&page=<?php echo ($data['page']+1);?>">Próxima</a></li>
+                                    } else { ?>
+                                        <li class="page-item "><a class="page-link" href="index.php?query=<?php echo $query; ?>&page=<?php echo ($data['page'] - 1); ?>">Anterior</a></li>
+                                        <?php
+                                    }
+
+                                    /* listing */
+                                    $i = 0;
+
+                                    for ($i = (($data['page'] - 5)); $i < (($data['page'] + 5)); $i++) {
+                                        if (($data['page'] - 1) == $i) {
+                                            //curr page
+                                        ?>
+                                            <li class="page-item disabled"><a class="page-link" href="#"><?php echo ($i + 1); ?></a></li>
+                                        <?php
+                                        } else {
+                                            if ($i >= 0 && $i <= (($num_pages))) {
+                                            ?>
+                                                <li class="page-item"><a class="page-link" href="index.php?query=<?php echo $query; ?>&page=<?php echo ($i + 1); ?>"><?php echo ($i + 1); ?></a></li>
+                                        <?php
+
+                                            }
+                                        }
+                                    }
+
+                                    /*botton next*/
+                                    if (($data['page']) >= $num_pages) { ?>
+                                        <li class="page-item disabled"><a class="page-link" href="#">Próxima</a></li>
                                     <?php
-                                    
-                                }
-                        ?>
-                                
-                       
-                        <?php
-                            }
-                            ?>
-                    </ul>
+                                    } else { ?>
+                                        <li class="page-item "><a class="page-link" href="index.php?query=<?php echo $query; ?>&page=<?php echo ($data['page'] + 1); ?>">Próxima</a></li>
+                                    <?php
+
+                                    }                            
+                                }                           
+                                    ?>
+                            </ul>
                 </div>
             </div>
                     
