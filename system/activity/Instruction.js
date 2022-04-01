@@ -7,8 +7,10 @@ class Instruction{
      * @param {type} type type. Is it an image? a video? an audio?
      * @returns {nothing}
      */
+   
     setAttributeValue(attributeDescriptor, newValue, params=null){
         console.log('set attr value: '+attributeDescriptor.attributeName + " val: " + newValue + " type> " + attributeDescriptor.attributeTypes[0]);
+        
         if(params == null){
             throw new Error("params must be filled");
             return null;
@@ -43,6 +45,7 @@ class Instruction{
         }
         
     }
+
     addStimulus(attributeDescriptor, newValue, params=[]){
         this.activity.addStimulus(newValue); //load file
         
@@ -245,6 +248,7 @@ class Instruction{
             return {type:"video", value: s.localID};
         }
     }
+
     constructor(data=null, activity=null){
         this.description = "";
         this.allowUse = false;

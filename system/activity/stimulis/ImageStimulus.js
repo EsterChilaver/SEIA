@@ -43,9 +43,10 @@ class ImageStimulus extends Stimulus{
     }
 
     scale(s){
+        console.log("Estrei em scale");
         var n_size = [this.renderImage.size[0], this.renderImage.size[1]];
-        n_size[0] = n_size[0]*s[0];
-        n_size[1] = n_size[1]*s[1];
+        n_size[0] = n_size[0]*s[1];
+        n_size[1] = n_size[1]*1;
         this.renderImage.setSize(n_size);
     }
     render(ctx, scale=1){

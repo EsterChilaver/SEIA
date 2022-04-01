@@ -322,15 +322,19 @@ class DFTImage{
         }
         return false;
     }
+
     setSize(size){
+        //utilizo o tamanho q tenho da caixa para calcular a posição dos botões x e conf
         this.size = size;
         this.removeButtonSquare =[this.size[0]-this.resizeButtonSize, 0, this.size[0], this.resizeButtonSize];
         this.gearButtonSquare =[this.size[0]-2*this.resizeButtonSize, 0, this.size[0]-this.resizeButtonSize, this.resizeButtonSize];
         
     }
+
     editPointerMove(evt){
         //throw new Error('You have to implement the editMouseDrag method!');
     }
+
     editPointerDrag(evt){
         var move = this.instruction.activity.pointerMovement;
         if(this.canDrag){

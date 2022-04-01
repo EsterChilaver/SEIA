@@ -7,7 +7,7 @@ class PositionImages extends Instruction{
         {
           var value = this.originalPositions[key];
           
-          value[0] = value[0]*scale[0];
+          value[0] = value[0]*scale[1];
           value[1] = value[1]*scale[1];
           this.originalPositions[key] = value;
          }
