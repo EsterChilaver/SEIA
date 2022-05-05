@@ -1,0 +1,244 @@
+@font-face {
+    font-family: "Righteous";
+    src: "/SEIA/fonts/righteous.ttf";
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@600&display=swap');
+/*font-family: 'Exo 2', sans-serif;*/
+
+body {
+    overflow-x: hidden;
+}
+
+.corpo {
+    padding: 0 8vw;
+}
+
+    .corpo p {
+        font-family: 'Exo 2', sans-serif;
+        color: #494949;
+        font-size: 14pt;
+    }
+
+.desenho-e-texto {
+    display: flex;
+    justify-content: space-between;
+}
+
+    .desenho {
+        width: 50vw;
+        height: 70vh;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        margin: 0;
+    }
+
+        .balao {
+            min-width: 25vw;
+            max-width: 35vw;
+            min-height: 60vh;
+            max-height: 60vh;
+            position: absolute;
+            transform: translateY(0px);
+            animation: float 5s ease infinite;
+        }
+
+        .nuvens {    
+            z-index: 1;
+            width: 30vw;
+            min-height: 70vh;    
+        }
+
+            @keyframes float {
+                0% { transform: translateY(0px); }
+                50% { transform: translateY(25px);}
+                100% { transform: translateY(0px);}
+            }
+
+        .texto-direita {    
+            width: 50vw;
+            margin: 0 0 13vh 0;
+            padding-left: 6vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: top;
+            text-align: right;
+        }
+
+            .texto-direita p {
+                padding-left: 30%;
+            }
+
+h1 {
+    font-family: "Righteous";
+    font-weight: 100;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #2a467a;
+    font-size: 45pt;
+    margin-bottom: 8vh;
+}
+
+    h1 .sublinhado {    
+        margin-left: 40%;
+        margin-top: 8px;
+        height: 5px;
+        background: #2a467a;    
+    }
+
+h2 {
+    font-family: "Righteous";
+    font-weight: 100;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+    color: #2a467a;
+    font-size: 25pt;
+    margin-bottom: 8vh;
+    text-align: center;
+}
+
+.area-login {
+    width: 42vw;
+    padding: 0;
+    display: block;
+    justify-content: center;
+    border-right: 2px solid #96acc0;
+}
+
+    .area-login a {
+        text-decoration: none;
+    }
+
+        .area-login a p {
+            width: 80%;
+            font-family: "Righteous";
+            text-align: center; 
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 12pt;
+            color: #2a467a;
+        }
+
+.container .desenho-e-texto {
+    display: flex;
+    justify-content: space-between;
+}
+
+input {
+    border-style: solid;
+    width: 100%;
+}
+
+form.formulario-login {
+    width: 80%;
+}
+
+form.formulario-login label {
+    font-family: "Righteous";
+    text-transform: uppercase;
+    font-weight: 100;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 10px;
+    color: #96acc0;
+}
+
+    form .form-group { 
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+        form .form-group input {
+            display: flex;
+            justify-content: left;
+            width: 92%;
+            height: 45px;       
+            padding: 0 15px;
+            font-family: "Exo 2";
+            font-size: 14pt;
+            color: #2a467a;
+            border-color: #96acc0;
+        }
+
+        form .form-group button {
+            width: 100%;
+            padding: 15px 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-family: "Righteous";
+            font-size: 14pt;
+            text-transform: uppercase;
+            background: #2a467a;
+        }
+
+        #sigin_pass:focus {
+            color: red;
+        }
+
+footer {
+    padding: 50px 8vw;
+}
+
+    footer p {
+        font-family: 'Exo 2', sans-serif;
+        font-size: 12pt;
+        text-align: center;
+    }
+
+@media (max-width: 999px) { /*responsividade*/
+
+    body {overflow-x: hidden;}
+
+    .desenho-e-texto {
+        flex-direction: column;
+        width: 80vw;
+        margin-left: 3.5vw;
+    }
+
+    div.texto-direita, p.texto-conteudo, h1 {
+        padding: 0px;
+        text-align: center;
+        max-width: 98%;
+    }
+
+    div.texto-direita {
+        padding-left: 0;
+        width: 100%;
+        margin: 0;        
+        display: block;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    div.sublinhado {
+        padding: 0;
+        margin: 0 10%;
+        margin-top: 10px;
+    }
+
+    div.desenho-e-texto div.desenho {
+        width: 80vw;
+        margin-bottom: 8vh;        
+        max-height: 50vh;
+        display: flex;
+        justify-content: space-around;
+    }    
+
+    .balao {
+        min-width: 20vw;
+        max-width: 30vw;
+        min-height: 50vh;
+    }
+
+    .nuvens {
+        min-width: 72%;
+        min-height: 50vh;
+        max-height: 50vh;
+    }
+}
