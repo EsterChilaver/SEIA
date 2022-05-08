@@ -15,16 +15,20 @@ require ROOTPATH . '/lang/' . $sel_lang . "/auth/login.php";
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="/SEIA/media/icone_seia.svg"></link>
   <link rel="stylesheet" href="/SEIA/style/header.css">
-  <link rel="stylesheet" href="/SEIA/style/body.css">  
+    <link rel="stylesheet" href="/SEIA/style/body.css">
+    <link rel="stylesheet" href="/SEIA/style/responsivo.css">
+    <link rel="stylesheet" href="/SEIA/style/animacoes.css">
   <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
   <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
+  <script src="/SEIA/scripts/mobile-navbar.js"></script>
+  <script src="/SEIA/scripts/mostrar_senha.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-<header class="header-branco">
+<header id="header-branco">
 
     <nav>
 
@@ -47,22 +51,20 @@ require ROOTPATH . '/lang/' . $sel_lang . "/auth/login.php";
   
 <div class="corpo">
 
-    <div class="col">
+    <div class="container" id="tela-login">
 
-        <div class="container">
-
-            <?php if(isset($data['error']) && $data['error']){ ?>
-                <div class="alert alert-danger" role="alert">
-                Nome de usuário ou senha errados.
-                </div>
-            <?php } ?>
+        <?php if(isset($data['error']) && $data['error']){ ?>
+            <div class="alert alert-danger" role="alert">
+            Nome de usuário ou senha errados.
+            </div>
+        <?php } ?>
                 
             
-            <h2><?php echo $lang['login_header'];?></h2>
+        <h2><?php echo $lang['login_header'];?></h2>
 
-            <div class="desenho-e-texto">
+        <div class="desenho-e-texto">
             
-                <div class="area-login">
+                <div class="texto">
 
                     <form action="index.php?action=login" method="post" class="formulario-login">
 
@@ -74,6 +76,9 @@ require ROOTPATH . '/lang/' . $sel_lang . "/auth/login.php";
                         <div class="form-group">
                             <label for="sigin_pass"><?php echo $lang['login_pass'];?></label>
                             <input type="password" class="form-control" id="sigin_pass" name="sigin_pass">
+                            <div id="olho-senha" class="lnr-eye" onclick="mostrarSenha()">
+                                <img src="/SEIA/media/icones/mostrar_senha.svg"></img>
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -81,22 +86,36 @@ require ROOTPATH . '/lang/' . $sel_lang . "/auth/login.php";
                                 <?php echo $lang['login_button'];?>
                             </button>
                         </div>
+
+                        <a class='text-danger text-underline' href="index.php?action=passRecovery">
+                            <p>Esqueceu nome de usuário ou senha?</p>
+                        </a>
                     
                     </form>
-
-                    <a class='text-danger text-underline' href="index.php?action=passRecovery">
-                        <p>Esqueceu nome de usuário ou senha?</p>
-                    </a>
                 
                 </div>
 
-            </div>
+                <div class="barra-vertical"></div>
 
-        </div>
+                <div class="barra-horizontal"></div>
 
-    </div>
+                
+
+                <div class="desenho" id="cerebro-carregando">
+                    <img src="/SEIA/media/vetores/cerebro_carregando.svg"></img>
+                </div>
+
+        </div>    
+        
+    </div><!--container-->
 
 </div>
+
+<footer>
+
+  <p>Este sistema está em desenvolvimento na Universidade Federal do ABC. Esta é a versão de testes.</p>
+
+</footer>
 
 </body>
 </html>

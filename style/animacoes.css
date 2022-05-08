@@ -1,0 +1,35 @@
+@keyframes cima-baixo { /*animação que vai de cima para baixo*/
+    0% {
+        transform: translateY(0);
+    }
+    25%{
+        transform: translateY(-10px); 
+    }
+    50% {
+        transform: translateY(0px);
+    }
+    75% {
+        transform: translateY(-10px);
+    }           
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes esquerda-direita { /*animação que vai de um lado para o outro*/
+    0% {
+        transform: translateX(0);
+    }
+    25%{
+        transform: translateX(-15px); 
+    }
+    50% {
+        transform: translateX(0px);
+    }
+    75% {
+        transform: translateX(-15px);
+    }           
+    100% {
+        transform: translateX(0);
+    }
+}

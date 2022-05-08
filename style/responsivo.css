@@ -1,0 +1,103 @@
+@media (max-width: 999px) { /*tela-inicial*/
+
+    footer {
+        padding: 5vw 8vw;
+        padding-top: 2vw;
+    }
+
+    #tela-inicial .desenho-e-texto {
+        display: block;
+    }
+
+    #tela-inicial .texto, #tela-inicial .desenho {
+        width: 100%;
+        display: block;
+        margin: 0;
+        margin-bottom: 8vh;        
+    }
+
+    #tela-inicial h1, #tela-inicial p {
+        text-align: center;
+        padding: 0;
+    }
+
+    .desenho-e-texto .texto {
+        display: flex;
+        justify-content: center;
+    }
+
+    .texto .barra-horizontal {
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    #tela-inicial .texto .texto-conteudo {
+        padding-left: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    #tela-inicial .desenho-e-texto .desenho {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+
+        #tela-inicial .desenho img {
+            display: inline-block;
+            max-width: 32vw;
+        }
+
+        #tela-inicial .desenho img#balao {
+            display: block;
+            max-width: 30vw;
+        }
+
+        #tela-inicial .desenho img#nuvens {
+            top: 25vh;
+            position: absolute;
+            min-height: 50vh;
+            max-height: 90vh;
+        }
+
+}
+
+@media (max-width: 999px) { /*tela login*/
+
+#tela-login, #tela-login .desenho-e-texto {
+    display: block;
+}
+
+#tela-login .texto, #tela-login .desenho {
+    width: 100%;
+}
+
+#tela-login .texto input {
+    max-width: 94%;
+    margin-right: 0;
+}
+
+#tela-login .barra-vertical {
+    display: none;
+}
+
+#tela-login .barra-horizontal {
+    display: block;
+    width: 100%;
+    height: 3px;
+    margin: 5vh 0;
+    background: #adb7ca;
+}
+
+#tela-login form {
+    width: 100%;
+}
+
+#tela-login #cerebro-carregando img {
+    min-width: 80%;
+}
+
+}
