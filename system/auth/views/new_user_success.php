@@ -7,6 +7,7 @@ $sel_lang = "ptb";
 require ROOTPATH . '/lang/' . $sel_lang . "/auth/new_user_success.php";
 
 ?>
+
 <!DOCTYPE html>
 <html lang="ptb">
 <head>
@@ -21,11 +22,9 @@ require ROOTPATH . '/lang/' . $sel_lang . "/auth/new_user_success.php";
 <body>
   
 
-<div class="col">
+<div class="corpo">
     <div class="container">
         <h2 class='jumbotron'><?php echo $lang['user_created_success'];?></h2>
-        
-        
     </div>
 </div>
 

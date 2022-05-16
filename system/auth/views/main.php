@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/SEIA/style/responsivo.css">
     <link rel="stylesheet" href="/SEIA/style/animacoes.css">
     <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
+    <script src="/SEIA/scripts/mobile-navbar.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -41,42 +42,40 @@
 
   </header><!--cabecalho-->
 
-<div class="corpo">
+  <div class="corpo">
 
-  <div class="container" id="tela-inicial">
+    <div class="container" id="tela-inicial">
 
-      <div class="desenho-e-texto">
+        <div class="desenho-e-texto">
 
-        <div class="desenho">
+          <div class="desenho">
 
-          <img src="/SEIA/media/vetores/balao.svg" id="balao"></img>
-          <img src="/SEIA/media/vetores/nuvens.svg" id="nuvens"></img>
+            <img src="/SEIA/media/vetores/balao.svg" id="balao"></img>
+            <img src="/SEIA/media/vetores/nuvens.svg" id="nuvens"></img>
+
+          </div>
+
+          <div class="texto">
+
+            <h1>Sobre o SEIA</h1>
+
+            <div class="barra-horizontal"></div>
+
+            <p class="texto-conteudo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet tellus gravida, consectetur nisl in, ornare libero. Suspendisse lacinia felis tincidunt magna facilisis, eu lacinia urna finibus. Phasellus massa mi, laoreet quis convallis sit amet, vulputate ut tortor. Fusce condimentum orci et neque volutpat, id suscipit sem auctor.</p>
+          
+          </div>
 
         </div>
 
-        <div class="texto">
-
-          <h1>Sobre o SEIA</h1>
-
-          <div class="barra-horizontal"></div>
-
-          <p class="texto-conteudo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet tellus gravida, consectetur nisl in, ornare libero. Suspendisse lacinia felis tincidunt magna facilisis, eu lacinia urna finibus. Phasellus massa mi, laoreet quis convallis sit amet, vulputate ut tortor. Fusce condimentum orci et neque volutpat, id suscipit sem auctor.</p>
-        
-        </div>
-
-      </div>
+    </div>
 
   </div>
 
-</div>
+  <footer>
 
-<footer>
+    <p>Este sistema está em desenvolvimento na Universidade Federal do ABC. Esta é a versão de testes.</p>
 
-  <p>Este sistema está em desenvolvimento na Universidade Federal do ABC. Esta é a versão de testes.</p>
-
-</footer> 
-
-  <script src="/SEIA/scripts/mobile-navbar.js"></script>
+  </footer>   
 
   </body>
 </html>

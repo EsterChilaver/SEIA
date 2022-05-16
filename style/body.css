@@ -11,10 +11,10 @@ body {
     width: 100vw;
 }
 
-h1, h2 {
+h1, h2, h3 {
     font-family: "Righteous";
-    font-weight: 100;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
+    font-weight: 100;    
     color: #2a467a;
 }
 
@@ -23,7 +23,30 @@ h1 {
     justify-content: right;
     font-size: 45pt;
     text-transform: uppercase;
+    letter-spacing: 2px;  
+}
+
+h2 {
+    font-size: 25pt;
+    letter-spacing: 1px;
+}
+
+h3 {
+    font-size: 17pt;
     margin-bottom: 3vh;
+}
+
+.alert { /*janela caso o usuario erre a senha*/
+    display: block;
+    margin: 5vh 0;
+    padding: 2vh 5vh;
+    width: 30vw;
+    font-family: "Exo 2";
+    font-size: 12pt;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: #ffc5c5;
+    color: #4d4d4d;
 }
 
     .texto .barra-horizontal {
@@ -34,14 +57,9 @@ h1 {
         background: #2a467a;
     }
 
-    #tela-inicial h1, p {
+    #tela-inicial h1, #tela-inicial p {
         text-align: right;
     }    
-
-h2 { 
-    font-size: 25pt;
-    text-transform: capitalize;
-}
 
 .corpo {
     display: block;
@@ -65,6 +83,14 @@ h2 {
         margin-bottom: 50px;
     }
 
+    .container p {
+        margin-bottom: 3vh;
+    }
+
+    #pg-cadastro .desenho-e-texto {
+        margin-top: 8vh;
+    }
+
     .desenho-e-texto {
         width: 100%;
         display: flex;
@@ -79,15 +105,53 @@ h2 {
         }
 
         .desenho-e-texto .texto {
-            display: inline-block;            
+            display: inline-block;
+            justify-content: space-around;            
             width: 49%;
             top: 0;
         }
 
-        #tela-inicial .texto .texto-conteudo {
+        /*#termos-de-uso*/
+
+            .desenho-e-texto .texto section {
+                display: block;
+                justify-content: space-around;
+                padding-left: 10vh;
+                width: 75%;
+            }            
+
+            .desenho-e-texto #termos-de-uso p {
+                margin-bottom: 3vh;
+            }
+
+            .checkbox-termos {
+                display: flex;
+                width: 100%;
+                align-items: center;                
+            }
+
+            #termos-de-uso .checkbox-termos p {
+                margin-bottom: 0px;
+                padding-left: 1vw;
+            }            
+
+            #criar-conta {
+                display: flex;
+                justify-content: space-around;
+                margin-top: 6vh;
+            }
+
+            #criar-conta .form-group {width: 70%;}
+
+            #criar-conta button {width: 70%;}
+
+        .texto-conteudo {
             font-family: "Exo 2";
             font-size: 14pt;
             color: #4d4d4d;
+        }
+
+        #tela-inicial .texto .texto-conteudo {
             padding-left: 10vw;
         }
 
@@ -117,10 +181,10 @@ h2 {
                         color: #adb7ca;
                     }
 
-                    .form-group input {
+                    .form-group input, .form-group textarea {
                         width: 100%;
                         max-width: 33.2vw;
-                        height: 4vh;
+                        min-height: 3vh;
                         border: 2px solid #adb7ca;
                         padding: 10px;
                         font-family: "Exo 2";

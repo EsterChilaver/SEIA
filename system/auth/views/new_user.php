@@ -63,12 +63,12 @@ require ROOTPATH . '/lang/' . $sel_lang . "/auth/new_user.php";
         <div class="form-group">
             <label for="signup_comment"><?php echo $lang['presentation'];?></label>
             <textarea required class="form-control" rows="5" id="signup_comment" name="signup_comment"></textarea>
-        </div>
-            
-        
+        </div>        
 
         <button type="submit" class="btn btn-primary btn-lg btn-block"><?php echo $lang['button_signup'];?></button>
+
         </form>
+        
     </div>
 </div>
 

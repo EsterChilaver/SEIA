@@ -1,0 +1,88 @@
+.modal {    
+    position: fixed;
+    background-color: white;
+    box-shadow: 0px 3px 10px 0px #696969;
+    display: none;
+    justify-content: space-around;
+    align-content: center;
+    border-radius: 10px;
+    z-index: 2;    
+    animation: janela-modal;
+    animation-duration: 800ms;
+}
+
+.fechar-modal {
+    position: absolute;
+    z-index: 3;
+    width: 8vh;
+    height: 8vh;
+    top: -2vh;
+    right: -4vh;
+    border-radius: 100%;
+    background: #da3f3f;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    cursor: pointer;
+    transition: 0.5s;
+    border: 7px solid #fff;
+}
+
+    .fechar-modal:hover {background: #ec7272;}
+
+    .fechar-modal img {
+        width: 40%;
+    }
+
+#recuperar-senha {
+    padding: 5vh;
+    min-width: 40vw;
+    max-height: 80vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.modal h2 {
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 15vh;
+}
+
+    .modal h2 .barra-horizontal {
+        width: 50%;
+        min-height: 3px;
+        margin-left: 25%;
+        margin-top: 1vh;
+        background: #2a467a;
+    }
+
+.modal form {
+    display: block;
+    width: 80%;
+    margin: 0 10%;
+}
+
+#recuperar-senha .form-control {
+    min-width: 92%;
+}
+
+#recuperar-senha .form-group button {
+    width: 60%;
+    margin: 5vh 20%;
+}
+
+.fundo-escuro {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    background-color: #293449;
+    opacity: 0.7;
+    z-index: 1;
+}
+
+@media (max-width: 999px) { #recuperar-senha {width: 70%;}}

@@ -18,10 +18,12 @@ require ROOTPATH . '/lang/' . $sel_lang . "/auth/login.php";
     <link rel="stylesheet" href="/SEIA/style/body.css">
     <link rel="stylesheet" href="/SEIA/style/responsivo.css">
     <link rel="stylesheet" href="/SEIA/style/animacoes.css">
+    <link rel="stylesheet" href="/SEIA/style/janela-modal.css">
   <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
   <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
   <script src="/SEIA/scripts/mobile-navbar.js"></script>
   <script src="/SEIA/scripts/mostrar_senha.js"></script>
+  <script src="/SEIA/scripts/janela-modal.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -51,20 +53,23 @@ require ROOTPATH . '/lang/' . $sel_lang . "/auth/login.php";
   
 <div class="corpo">
 
-    <div class="container" id="tela-login">
-
-        <?php if(isset($data['error']) && $data['error']){ ?>
-            <div class="alert alert-danger" role="alert">
-            Nome de usuário ou senha errados.
-            </div>
-        <?php } ?>
-                
+    <div class="container" id="tela-login">                
             
         <h2><?php echo $lang['login_header'];?></h2>
 
         <div class="desenho-e-texto">
             
                 <div class="texto">
+
+                <?php /*aviso de erro caso o usuario erre a senha*/
+        
+                    if(isset($data['error']) && $data['error']){ ?>
+
+                    <div class="alert alert-danger" role="alert">
+                        Nome de usuário ou senha incorretos.
+                    </div>
+
+                <?php } ?>
 
                     <form action="index.php?action=login" method="post" class="formulario-login">
 
@@ -87,7 +92,7 @@ require ROOTPATH . '/lang/' . $sel_lang . "/auth/login.php";
                             </button>
                         </div>
 
-                        <a class='text-danger text-underline' href="index.php?action=passRecovery">
+                        <a onclick="janelaModal()" class='text-danger text-underline'>
                             <p>Esqueceu nome de usuário ou senha?</p>
                         </a>
                     
@@ -109,6 +114,29 @@ require ROOTPATH . '/lang/' . $sel_lang . "/auth/login.php";
         
     </div><!--container-->
 
+    <div class="modal" id="recuperar-senha">
+
+        <div class="fechar-modal" onclick="fecharModal()">
+            <img src="/SEIA/media/icones/cancelar_branco.svg"></img>
+        </div>
+
+        <h2>Recuperação de senha<div class="barra-horizontal"></div></h2>
+        
+        <form action="index.php?action=sendRecoveryEmail" method="post">
+
+            <div class="form-group">
+                <label for="sigin_username">Nome de usuário ou e-mail</label>
+                <input type="text" class="form-control" id="sigin_username" name="sigin_username">
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Recuperar Senha</button>
+            </div>
+
+        </form>
+
+    </div>    
+
 </div>
 
 <footer>
@@ -116,6 +144,8 @@ require ROOTPATH . '/lang/' . $sel_lang . "/auth/login.php";
   <p>Este sistema está em desenvolvimento na Universidade Federal do ABC. Esta é a versão de testes.</p>
 
 </footer>
+
+<div class="fundo-escuro"></div>
 
 </body>
 </html>

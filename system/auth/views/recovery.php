@@ -23,26 +23,26 @@ require ROOTPATH . '/lang/' . $sel_lang . "/auth/login.php";
 
 <div class="col">
     <div class="container">
-        <?php if(isset($data['error']) && $data['error']){ ?>
+        <!--</*?php if(isset($data['error']) && $data['error']){ ?>
             <div class="alert alert-danger" role="alert">
             Nome de usuário ou senha errados.
           </div>
-        <?php } ?>
+        </*?php } ?>-->
             
         
-        <h2>Recuperação de senha</h2>
+        <!--<h2>Recuperação de senha</h2>
         
         <form action="index.php?action=sendRecoveryEmail" method="post">
 
-        <div class="form-group">
-            <label for="sigin_username">Nome de usuário ou e-mail</label>
-            <input type="text" class="form-control" id="sigin_username" name="sigin_username">
-        </div>
+            <div class="form-group">
+                <label for="sigin_username">Nome de usuário ou e-mail</label>
+                <input type="text" class="form-control" id="sigin_username" name="sigin_username">
+            </div>
 
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Recuperar Senha</button>
+
+        </form>-->
         
-
-        <button type="submit" class="btn btn-primary btn-lg btn-block">Recuperar Senha</button>
-        </form>
     </div>
 </div>
 

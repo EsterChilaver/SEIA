@@ -17,20 +17,20 @@
         transition: 1s;
     }
 
-    #header-branco .criar-conta:hover {
+    #header-branco li:hover {
         background-color: #2a467a;
         transition: 1s;
         color: white;
         cursor: pointer;
     }
 
-        #header-branco .criar-conta:hover p {color: white;}    
+        #header-branco li:hover p {color: white;}    
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 60px;
+    margin-bottom: 6vh;
     padding: 2.5vh 0;
     height: 16vh; 
     font-family: "Righteous";    
@@ -76,7 +76,8 @@ header {
 #header-normal {       
     color: white;
     background: #2a467a;
-    box-shadow: 0px 3px 10px 0px rgb(105, 105, 105);
+    box-shadow: 0px 3px 10px 0px #696969;
+    margin-bottom: 8vh;
 }    
 
     #header-normal nav .nav-list {

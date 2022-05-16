@@ -33,3 +33,7 @@
         transform: translateX(0);
     }
 }
+
+@keyframes janela-modal {/*animação que faz a janela modal aparecer com fade-in*/
+    0% {opacity: 0;} 100% {opacity: 1;}
+}

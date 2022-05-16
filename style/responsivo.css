@@ -48,6 +48,7 @@
 
         #tela-inicial .desenho img {
             display: inline-block;
+            align-content: flex-start;
             max-width: 32vw;
         }
 
@@ -57,7 +58,7 @@
         }
 
         #tela-inicial .desenho img#nuvens {
-            top: 25vh;
+            top: 8vh;
             position: absolute;
             min-height: 50vh;
             max-height: 90vh;
@@ -75,9 +76,16 @@
     width: 100%;
 }
 
+#tela-login .texto {display: block;}
+
 #tela-login .texto input {
     max-width: 94%;
     margin-right: 0;
+}
+
+#tela-login .alert {
+    width: auto;
+    text-align: center;
 }
 
 #tela-login .barra-vertical {
@@ -99,5 +107,47 @@
 #tela-login #cerebro-carregando img {
     min-width: 80%;
 }
+
+}
+
+@media (max-width: 999px) { /*tela cadastro*/
+
+    p.texto-conteudo {text-align: center;}
+
+    h3 {text-align: center;}
+
+    .barra-vertical {display: none;}
+
+    .desenho-e-texto {display: block;}
+
+    #pg-cadastro .texto {
+        width: 100%;
+        display: block;
+    }
+
+    #pg-cadastro input.form-control {max-width: 94%;}
+
+    #pg-cadastro textarea {max-width: 94%;}
+    
+    #pg-cadastro section {
+        width: 100%;
+        padding-left: 0;
+        margin-top: 6vh;
+    }
+
+    #pg-cadastro .alinhar-ao-centro {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 6vh;
+    }
+
+    #pg-cadastro .checkbox-termos {
+        width: auto;
+        justify-content: space-around;
+    }
+
+    #pg-cadastro .checkbox-termos .texto-conteudo {
+        padding-left: 2vw;
+    }
 
 }
