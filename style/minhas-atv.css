@@ -1,0 +1,131 @@
+
+/*barra de pesquisa*/
+
+.barra-pesquisa {
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8vh;
+}
+
+.barra-pesquisa form {
+    width: 75%;
+    box-sizing: border-box;
+}
+
+.barra-pesquisa .form-group {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0 10px;
+    display: flex;
+    justify-content: left;
+    background: #eceff5;
+    border: 2px solid #adb7ca;
+}
+
+    .barra-pesquisa .form-group input {
+        box-sizing: border-box;
+        font-family: "Righteous";
+        letter-spacing: 1px;
+        max-width: 100%;
+        height: 100%;        
+        padding: 0 10px;
+        margin: 0;
+        background: transparent;
+        border: none;
+    }
+
+    .barra-pesquisa .form-group button {
+        box-sizing: border-box;
+        width: auto;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        border-radius: 0;
+        background: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .barra-pesquisa .form-group button img {
+        width: 35px;
+        margin-right: 10px;
+    }
+
+    .barra-pesquisa .hide-btn {display: none;}
+
+.barra-pesquisa a { /*botao para clicar e aparecer as opcoes de criar nova atv ou buscar no repo*/
+    text-decoration: none;    
+}
+
+.barra-pesquisa a p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20vw;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 10px 15px;
+    background: #2a467a;
+    font-family: "Righteous";
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 1px;
+    transition: 1s;
+}
+
+    .barra-pesquisa a p img {
+        width: 35px;
+        margin-right: 20px;
+    }
+
+    .barra-pesquisa a p:hover {
+        opacity: 0.7;
+        transition: 1s;
+    }
+
+/*header titulo da pagina*/
+
+.header-titulo {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 8vh 8vw;            
+}
+
+    #minhas-atv {/*degrade*/
+        background: linear-gradient(53deg, #324672 0%, #fa6fce 100%);
+        background-size: 150% 150%;
+        animation: muda-degrade 10s ease infinite;
+    }
+
+.header-titulo .texto {width: 45%;}
+
+.header-titulo .barra-horizontal {
+    margin: 0;
+    margin-top: 1vh;
+    margin-bottom: 5vh;
+    height: 4px;
+    background: #fff;
+}
+
+.header-titulo h1, .header-titulo p {
+    color: #fff;
+}
+
+.header-titulo .desenho {
+    min-width: 51vw;
+    display: flex;
+    justify-content: right;
+}
+
+.header-titulo img {
+    width: 100%;
+}

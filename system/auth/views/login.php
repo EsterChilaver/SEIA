@@ -42,7 +42,7 @@ require ROOTPATH . '/lang/' . $sel_lang . "/auth/login.php";
         <div class="line3"></div>
       </div>
 
-      <ul class="nav-list">
+      <ul class="nav-list-index">
         <!--<li><p>Esqueceu a senha? Então <a class='text-danger text-underline' href="index.php?action=passRecovery"><u>Recupere sua senha</u></a>!</p></li>-->
         <a href="index.php?action=showTherms"><li class="criar-conta"><p>Criar conta</p></li></a>
       </ul>
@@ -103,8 +103,6 @@ require ROOTPATH . '/lang/' . $sel_lang . "/auth/login.php";
                 <div class="barra-vertical"></div>
 
                 <div class="barra-horizontal"></div>
-
-                
 
                 <div class="desenho" id="cerebro-carregando">
                     <img src="/SEIA/media/vetores/cerebro_carregando.svg"></img>

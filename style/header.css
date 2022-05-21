@@ -8,6 +8,56 @@
     padding: 0;
 }
 
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.5vh 0;
+    height: 16vh; 
+    font-family: "Righteous";
+}
+
+    header li {
+        list-style: none;
+        text-align: center;
+    }
+
+    header li p {
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    header a {
+        text-decoration: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    header .logo {
+        max-height: 12vh;
+    }
+
+    header nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 0 5.5vw;
+    }
+
+        header nav ul li {
+            margin: 0;
+            padding: 5px 10px;     
+            text-align: center;
+            width: 10vw;
+            height: auto;
+            text-transform: uppercase;
+            font-size: 14pt;
+            font-weight: 100;
+            letter-spacing: 2px;
+            transition: 0.5s;
+        }
+
 #header-branco {
     background: white;
 }
@@ -24,82 +74,149 @@
         cursor: pointer;
     }
 
-        #header-branco li:hover p {color: white;}    
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 6vh;
-    padding: 2.5vh 0;
-    height: 16vh; 
-    font-family: "Righteous";    
-}
-
-    header li {
-        list-style: none;
-        text-align: center;
-    }
-
-    header li p {
-        text-align: center;
-    }
-
-    header a {
-        text-decoration: none;
-    }
-
-    header .logo {
-        max-height: 12vh;
-    }
-
-    header nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        padding: 0 5.5vw;
-    }
-
-        header nav .nav-list li {
-            margin: 0;
-            padding: 15px 10px;     
-            text-align: center;
-            width: 200px;
-            text-transform: uppercase;
-            font-size: 14pt;
-            font-weight: 100;
-            letter-spacing: 2px;
-            transition: 0.5s;
-        }
+        #header-branco li:hover p {color: white;}
 
 #header-normal {       
     color: white;
     background: #2a467a;
     box-shadow: 0px 3px 10px 0px #696969;
-    margin-bottom: 8vh;
 }    
 
-    #header-normal nav .nav-list {
+    #header-normal nav ul {
         list-style: none;
         display: flex;
         padding: 30px auto;
         margin: 0;
     }        
 
-        #header-normal nav .nav-list li:hover {
+        #header-normal nav ul li:hover {
             background-color: white;
             transition: 1s;
             color: #2a467a;
             cursor: pointer;
         }
 
-        #header-normal nav .nav-list a {
+        #header-normal nav ul a {
             text-decoration: none;
             text-align: center;
             color: white;
+        }
+
+        #header-normal nav .nav-list-index a {
             width: 100%;
         }
+
+.nav-list-index { /*header da pagina inicial*/    
+    width: 35vw;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+    .nav-list-index a {
+        width: 15vw;
+        height: 8vh;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .nav-list-index a li {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .nav-list-index a li p {width: 100%;}
+
+.menu { /*header das paginas do seia em si*/
+    min-height: 16vh; 
+    box-shadow: 0px 3px 10px 0px #696969;
+}
+        
+    .menu nav {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .menu ul {
+        width: 70vw;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .menu ul a {
+        display: flex;
+        justify-content: space-around;
+        width: auto;
+    }
+
+    .menu li {
+        display: flex;
+        flex-direction: column;
+        justify-content: top;
+        align-items: center;
+        min-width: 12vw;
+        padding: auto;        
+    }
+
+    .menu li p {
+        font-size: 12pt;
+        width: 90%;
+        text-align: center;
+        letter-spacing: 1px;
+    }
+
+    .menu .nav-list-index li {
+        padding: 0;
+    }   
+
+    .menu li img {
+        transition: 1s;
+        height: 3.5vh;
+        margin-bottom: 2vh;
+    }
+
+        .menu li .icone-azul {
+            display: none;
+            transition: 1s;
+        }
+
+            .menu a:hover .icone-branco {
+                transition: 1s;
+                display: none;
+            }
+
+            .menu a:hover .icone-azul {
+                transition: 1s;
+                display: block;
+            }
+
+    .icone-usuario {
+        box-sizing: border-box;
+        width: 7vw;
+        height: 7vw;
+        border-radius: 100%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 5px solid #fff;
+    }
+
+        .icone-usuario a img {
+            filter: saturate(50%);
+            width: 100%;
+            transition: 1s;
+        }
+
+        .icone-usuario:hover a img {
+            filter: saturate(100%);
+            transition: 1s;
+        }
+
 
 .mobile-menu {
     display: none;
@@ -113,7 +230,11 @@ header {
         transition: 0.3s;
     }        
 
-    #header-normal .mobile-menu div {background: white;}
+    #header-normal .mobile-menu div {
+        background: white;
+        margin-right: 5vw;
+        height: 3px;
+    }
 
     #header-branco .mobile-menu div {background: #2a467a;}
 
@@ -134,7 +255,7 @@ header {
 
     #header-branco nav {padding-right: 0;}
     
-    #header-normal .nav-list {
+    #header-normal ul {
         position: absolute;
         z-index: 2;
         padding: 0;
@@ -152,7 +273,7 @@ header {
 
         #header-branco ul {background: white;}
 
-    #header-normal .nav-list li {
+    #header-normal ul li {
         margin-left: 0;
         width: 100%;
         padding: 25px 0px;
@@ -170,7 +291,7 @@ header {
 
 }
 
-#header-normal .nav-list.active { 
+#header-normal ul.active { 
     transform: translateX(0);
 }
 

@@ -77,44 +77,55 @@ document.body.onload=function(){
     }
   
 </script>
-<div class="row">
-    <div class="col">
-        <div class="container">
 
-            <div class="row">
-                <div class="col">
-                    <div class="row mt-3">
-                        <div class="col">
+<div class="container">
 
-                            <h3> <a id="tutoNovaAtividade"class="btn btn-warning btn-lg btn-block border-dark text-white" href="index.php?action=new">Nova atividade </a></h3>
+    <div class="header-titulo" id="minhas-atv">
 
-                        </div>
-                        <div class="col">
-                            <h3> <a class="btn btn-warning btn-lg btn-block border-dark text-white " href="index.php?action=repository">Buscar no repositório</a></h3>
+        <div class="desenho-e-texto">
 
-                        </div>
-                    </div>
+            <div class="texto">
 
-                    <!-- filtrar -->
-                    <div class="row mt-4">
-                        <div class="col">
-                            <form autocomplete="off" class="form mt-1" action="index.php?action=filter_form" method="post">
-                                <input  hidden id="rep" name="rep" type="rep"  value="<?php echo $repository?>">
-                                <div class="form-row">
-                                    <div class="form-group col-md-11">
-                                        <input class="form-control mr-sm-2" id="search" name="query" type="query" placeholder="Filtrar" aria-label="Search" value="">
-                                    </div>
-                                    <div class="form-group col-md-1">
-                                        <button type="submit" class="btn btn-outline-success form-control">
-                                            <i class="fas fa-search"></i> 
-                                        </button>
+                <h1>Minhas atividades</h1>
 
-                                    </div>
-                                </div> 
-                                
-                            </form>
-                        </div>
-                    </div>
+                <div class="barra-horizontal"></div>
+
+                <p class="texto-conteudo">Crie ou edite as atividades criadas por você, ou aquelas criadas pela comunidade e adicionadas aqui do Repositório.</p>
+
+            </div>
+
+            <div class="desenho"><img src="/SEIA/media/vetores/minhas_atividades.svg"></img></div>
+
+        </div>
+
+    </div>
+
+</div><!--container-->
+
+<div class="corpo">
+
+<div class="barra-pesquisa">
+
+    <!-- filtrar -->    
+                            
+    <form autocomplete="off" class="form mt-1" action="index.php?action=filter_form" method="post">
+        <input hidden id="rep" name="rep" type="rep"  value="<?php echo $repository?>">
+
+        <div class="form-group" id="pesquisar">
+            <button type="submit" class="btn btn-outline-success form-control">
+                <img src="/SEIA/media/barra_pesquisa/pesquisa.svg"></img>
+            </button> 
+
+            <input class="form-control mr-sm-2" id="search" name="query" type="query" placeholder="PESQUISE POR ATIVIDADES" aria-label="Search" value="">
+        </div>
+                                    
+    </form>
+
+    <a id="tutoNovaAtividade"class="btn btn-warning btn-lg btn-block border-dark text-white" href="index.php?action=new"><p><img src="/SEIA/media/barra_pesquisa/adicionar_branco.svg">Nova atividade</p></a>
+                        
+    <a class="btn hide-btn" href="index.php?action=repository"><p>Buscar no repositório</p></a>
+                        
+</div>                    
                     
                     
                     <!-- resultados -->
@@ -239,7 +250,7 @@ document.body.onload=function(){
                         ?>
 
 
-                </div>
+                
                     
                     <!--pagination -->
                     <div class="row mt-3">
@@ -305,7 +316,8 @@ document.body.onload=function(){
                 </div>
             </div>
         </div>
-    </div>
+    
+
     <div id='help' style="position: absolute; top:5px; right: 30px;" >
     <button class='btn btn-block btn-lg btn-warning' onclick="showHelp()"><i class="fas fa-question"></i></button>
 

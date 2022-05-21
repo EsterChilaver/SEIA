@@ -43,7 +43,7 @@ require ROOTPATH . '/lang/' . $sel_lang . "/auth/new_user.php";
         <div class="line3"></div>
       </div>
 
-      <ul class="nav-list">
+      <ul class="nav-list-index">
         <a href="index.php?action=loginForm"><li><p>Entrar</p></li></a>
         <!--<li><p>Esqueceu a senha? Então <a class='text-danger text-underline' href="index.php?action=passRecovery"><u>Recupere sua senha</u></a>!</p></li>-->
         <!--<a href="index.php?action=showTherms"><li class="criar-conta"><p>Criar conta</p></li></a>-->

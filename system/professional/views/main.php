@@ -15,8 +15,6 @@ $user_id = $_SESSION['username'];
 
 ?>
 
-
-
 <script>
     
    /* setInterval(function(){ 
@@ -50,14 +48,9 @@ $user_id = $_SESSION['username'];
         
     };
     
-    
-    
     var modal_addImage = function(event){
         
         var form = document.getElementById('newAvatar');
-     
-        
-        
         
         let req = new XMLHttpRequest();
         let formData = new FormData(document.getElementById('newAvatar'));
@@ -92,23 +85,28 @@ $user_id = $_SESSION['username'];
         //showModal("Ajuda",content);
         askToPerformTour();
     }
+
 </script>
 
 
-<form id="swapAvatarTemplate"class="d-none" enctype="multipart/form-data" autocomplete="off" action="" method="post" >
-
+<form id="swapAvatarTemplate"class="d-none" enctype="multipart/form-data" autocomplete="off" action="" method="post">
     
     <div class="input-group mb-3">
         <input name="student_id" id="student_id" type="text" hidden value="<?php echo $student_data['id'];?>">
         <input required name="stimuli_file" id="stimuli_image" onchange="modal_loadFile(event)" class="inputFile" accept="image/*" type="file" style="display: none;">
-         <div class="input-group-prepend">
+
+        <div class="input-group-prepend">
              <button  onclick="document.querySelector('#stimuli_image').click();"class="btn btn-outline-secondary" type="button">Selecionar Arquivo</button>
-         </div>
+        </div>
+
          <input id="inp_fileName" type="text" readonly class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-     </div>
-     <div class="container" id="preview">
+
+    </div>
+
+    <div class="container" id="preview">
         Selecione um arquivo.
     </div>
+
 </form>
 
 <div class="row mt-3 mb-3">
@@ -124,11 +122,8 @@ $user_id = $_SESSION['username'];
     </div>
     <div class="col-10">
         <div class="container">
-            
          
             <div class="card-columns mt-3">
-                
-                
                 
                 <div class="card  bg-light" id="tutoEstudantes">
                     <div class="card-header">Estudantes</div>
@@ -199,6 +194,7 @@ $user_id = $_SESSION['username'];
 
     </div>
 </div>
+    </div>
 
 <script>
 var tuto_finished = "<?php echo $_SESSION['tuto_finished'];?>" == "1" ;

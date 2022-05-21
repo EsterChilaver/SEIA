@@ -11,11 +11,17 @@ $data['user_avatar']=BASE_URL . "/data/user/mu/avatar.jpg";
 <html lang="ptb">
 <head>
   <title><?php echo $data['page_title']; ?></title>
+  <link rel="shortcut icon" href="/SEIA/media/icone_seia.svg"></link>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="<?php echo BASE_URL;?>/activity/views/paper.css">
+  <link rel="stylesheet" href="/SEIA/style/header.css">
+  <link rel="stylesheet" href="/SEIA/style/body.css">
+  <link rel="stylesheet" href="/SEIA/style/minhas-atv.css">
+  <link rel="stylesheet" href="/SEIA/style/responsivo.css">
+  <link rel="stylesheet" href="/SEIA/style/animacoes.css">
+  <!--<link rel="stylesheet" href="<?php echo BASE_URL;?>/activity/views/paper.css">
   <link rel="stylesheet" href="<?php echo BASE_URL;?>/external/bootstrap.min.css">
-  <link rel="shortcut icon" href="<?php echo BASE_URL;?>/ui/favicon.ico" />
+  <link rel="shortcut icon" href="<?php echo BASE_URL;?>/ui/favicon.ico" />-->
   <script src="<?php echo BASE_URL;?>/external/jquery.min.js"></script>
   <script src="<?php echo BASE_URL;?>/external/popper.min.js"></script>
   <script src="<?php echo BASE_URL;?>/external/bootstrap.min.js"></script>
@@ -29,6 +35,4 @@ $data['user_avatar']=BASE_URL . "/data/user/mu/avatar.jpg";
   <script src="<?php echo BASE_URL;?>/external/enjoyhint/enjoyhint.js"></script>
 </head>
 
-<body class="">
-<div id="booody" class="container-fluid">
 <?php require(ROOTPATH ."/ui/menu.php")?>
