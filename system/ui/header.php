@@ -16,7 +16,9 @@ $data['user_avatar']=BASE_URL . "/data/user/mu/avatar.jpg";
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/SEIA/style/header.css">
   <link rel="stylesheet" href="/SEIA/style/body.css">
-  <link rel="stylesheet" href="/SEIA/style/minhas-atv.css">
+  <link rel="stylesheet" href="/SEIA/style/area-titulo.css">
+  <link rel="stylesheet" href="/SEIA/style/cards.css">
+  <link rel="stylesheet" href="/SEIA/style/numero-pagina.css">
   <link rel="stylesheet" href="/SEIA/style/responsivo.css">
   <link rel="stylesheet" href="/SEIA/style/animacoes.css">
   <!--<link rel="stylesheet" href="<?php echo BASE_URL;?>/activity/views/paper.css">

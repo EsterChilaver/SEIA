@@ -117,7 +117,17 @@
         color: #fff;
     }
 
-    #header-normal .mobile-menu {display: block;}
+    #header-normal .mobile-menu {
+        display: block;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #header-normal .mobile-menu div {
+        display: flex;
+        margin-right: 0;
+        margin-left: 0;
+    }
 
 }
 
@@ -209,6 +219,19 @@
 
 /*minhas atividades*/
 
+@media (max-width: 999px) { /*menu*/
+
+    .menu img.logo {
+        max-width: 20%;
+    }
+
+    .menu div.icone-usuario {
+        min-width: 20vw;
+        min-height: 20vw;
+    }
+
+}
+
 @media (max-width: 999px) { /*titulo da pagina*/
 
     .header-titulo {
@@ -250,28 +273,30 @@
 @media (max-width: 999px) { /*barra de pesquisa*/
 
     .barra-pesquisa {
-        display: block;
+        display: flex;
+        flex-direction: column;
         height: auto;
         width: 100%;
         justify-content: center;
         align-items: center;
     }
 
+    .barra-pesquisa form {
+        width: 100%;
+    }
+
     .barra-pesquisa .form-group {
         margin-bottom: 2vh;
+        width: 100%;
         min-height: 8vh;
         display: flex;
         align-items: center;
     }
 
-    .barra-pesquisa .form-group {
-        min-width: 82vw;
-        max-width: 100%;
-    }
-
     .barra-pesquisa a {
         display: flex;
         justify-content: center;
+        width: 100%;
     }
 
     .barra-pesquisa a p {

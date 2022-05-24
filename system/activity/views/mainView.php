@@ -128,201 +128,262 @@ document.body.onload=function(){
 </div>                    
                     
                     
-                    <!-- resultados -->
+<!-- resultados -->
                     
-                    <div class="card-columns">
-                    <?php
-                    require_once ROOTPATH . '/utils/DBAccess.php';
-                    $SQL = "";
-                    $db = new DBAccess();
-                    $user_id = $_SESSION['username'];
-                    if($repository=='true'){
-                        $user_id = '_REPOSITORY';
-                    }
-                    $query = "";
+<div class="card-columns">
 
-                    $SQL = "SELECT COUNT(*) AS total  FROM activity WHERE owner_id ='$user_id' AND active='1' AND auto='0' AND auto_guide='0' AND NOT category LIKE '%reinforcement%' AND NOT category LIKE '%template%'";
+   <?php
+        require_once ROOTPATH . '/utils/DBAccess.php';
+        $SQL = "";
+        $db = new DBAccess();
+        $user_id = $_SESSION['username'];
+        if($repository=='true'){
+            $user_id = '_REPOSITORY';
+        }
+        $query = "";
 
-
-                    if(isset($data['query'])){
-
-                        $query = $data['query'];
-
-                        $SQL = $SQL. " AND ".
-                            "(name LIKE '%$query%' OR antecedent LIKE '%$query%' OR behavior LIKE '%$query%' OR consequence LIKE '%$query%' OR category LIKE '%$query%')";
-                    }
-
-                    $num_res = $db->query($SQL);
-                    $num_res = mysqli_fetch_assoc($num_res);
-                    $num_res = $num_res['total'];
-                    $results_per_page = 12;
-                    $num_pages = intdiv($num_res , $results_per_page);
-                    if( ($num_pages * $results_per_page) < $num_res)
-                        $num_pages = $num_pages + 1;
-                   
-
-                    ///gets results.
-                    $s_page = $data['page']-1;
-                    if($s_page < 0){
-                        $s_page = 0;
-                    }
-
-                    $offset = $s_page * $results_per_page;
-                    $limit  = $results_per_page;
-
-                    $SQL = "SELECT * FROM activity WHERE owner_id ='$user_id' AND active=1 AND auto=FALSE AND auto_guide=FALSE   AND NOT category LIKE '%reinforcement%' AND NOT category LIKE '%template%' LIMIT $limit OFFSET  $offset";
+        $SQL = "SELECT COUNT(*) AS total  FROM activity WHERE owner_id ='$user_id' AND active='1' AND auto='0' AND auto_guide='0' AND NOT category LIKE '%reinforcement%' AND NOT category LIKE '%template%'";
 
 
+        if(isset($data['query'])){
 
-                    if(isset($data['query'])){
+        $query = $data['query'];
 
-                        $query = $data['query'];
-                        $SQL = "SELECT * FROM activity WHERE owner_id ='$user_id' AND active=1 AND auto=FALSE AND auto_guide=FALSE AND NOT category LIKE '%reinforcement%' AND NOT category LIKE '%template%'";
-                        $SQL = $SQL. " AND ".
-                        "(name LIKE '%$query%' OR antecedent LIKE '%$query%' OR behavior LIKE '%$query%' OR consequence LIKE '%$query%' OR category LIKE '%$query%') LIMIT  $limit OFFSET  $offset";
-                    }
-                    $res = $db->query($SQL);
+        $SQL = $SQL. " AND ".
+            "(name LIKE '%$query%' OR antecedent LIKE '%$query%' OR behavior LIKE '%$query%' OR consequence LIKE '%$query%' OR category LIKE '%$query%')";
+        }
 
+        $num_res = $db->query($SQL);
+        $num_res = mysqli_fetch_assoc($num_res);
+        $num_res = $num_res['total'];
+        $results_per_page = 12;
+        $num_pages = intdiv($num_res , $results_per_page);
+        if( ($num_pages * $results_per_page) < $num_res)
+        $num_pages = $num_pages + 1;
+                        
 
+        ///gets results.
+        $s_page = $data['page']-1;
+        if($s_page < 0){
+            $s_page = 0;
+        }
+
+        $offset = $s_page * $results_per_page;
+        $limit  = $results_per_page;
+
+        $SQL = "SELECT * FROM activity WHERE owner_id ='$user_id' AND active=1 AND auto=FALSE AND auto_guide=FALSE   AND NOT category LIKE '%reinforcement%' AND NOT category LIKE '%template%' LIMIT $limit OFFSET  $offset";
+
+        if(isset($data['query'])){
+
+        $query = $data['query'];
+        $SQL = "SELECT * FROM activity WHERE owner_id ='$user_id' AND active=1 AND auto=FALSE AND auto_guide=FALSE AND NOT category LIKE '%reinforcement%' AND NOT category LIKE '%template%'";
+        $SQL = $SQL. " AND ".
+            "(name LIKE '%$query%' OR antecedent LIKE '%$query%' OR behavior LIKE '%$query%' OR consequence LIKE '%$query%' OR category LIKE '%$query%') LIMIT  $limit OFFSET  $offset";
+        }
+        $res = $db->query($SQL);
+
+        ?>
+
+    <?php
+    while($fetch = mysqli_fetch_assoc($res))
+    { 
+    ?>
+
+        <div class="card text-white bg-warning border-dark" id="<?php echo $fetch['id'];?>">
+        
+            <div class="card-img-top rounded img-thumbnail">
+                <div class="filtro"></div>
+                <img src="<?php 
+                require_once ROOTPATH . '/activity/ActivityController.php';
+                $ac = new ActivityController();
+                if($fetch['owner_id']=='_REPOSITORY'){
+                echo $ac->getThumbnail(['id'=>$fetch['id'],'rep'=>true]);
+                }
+                else
+                echo $ac->getThumbnail(['id'=>$fetch['id']]);
+                ?>">
+            </div>
+
+            <h4 class="card-header border-dark">
+                <p><?php echo $fetch['name'];?></p>
+
+                <div class="ver-mais">
+                    <div class="bolinha"></div>
+                    <div class="bolinha"></div>
+                    <div class="bolinha"></div>
+                </div>
+            </h4>
+
+            <div class="card-body">
+                                            
+                <!--abaixo há um codigo comentado-->
+                <!--div-->
+                    <!--<h4 class="card-text">Antecedente</h4>
+                    <p class="card-text"><?php echo $fetch['antecedent'];?></p>
+                                                    
+                    <h4 class="card-text">Comportamento Esperado</h4>
+                    <p class="card-text"><?php echo $fetch['behavior'];?></p>
+                    <h4 class="card-text">Consequência</h4>
+                    <p class="card-text"><?php echo $fetch['consequence'];?></p> 
+                                                        
+                    <cite class="card-text"><?php echo $fetch['category'];?></cite>-->
+                <!--/div-->
+
+                <span class="badge badge-secondary"><?php echo $DIFFICULTY[$fetch['difficulty']];?></span>     
+
+                <div class="container-fluid">
+
+                    <div class="row">
+
+                        <?php if($repository=='false'){ ?>
+                                                                    
+                        <div class="col-6">
+                            <a href="index.php?action=edit&id=<?php echo $fetch['id'];?>" class="btn btn-block btn-dark">Editar</a>
+                        </div>
+
+                        <div class="col-6">
+                            <a href="#" class="btn btn-block btn-dark" onclick="removeActivity('<?php echo $fetch['id'];?>')">Excluir</a>
+                        </div>
+
+                        <?php } else { ?>
+
+                        <div class="col">
+                            <a href="index.php?action=run&id=<?php echo $fetch['id'];?>" class="btn btn-block btn-dark">Visualizar</a>
+                        </div>
+
+                        <?php } ?>
+
+                        </div>
+
+                        <div class="row mt-1">
+                        <?php if($repository=='true'){ ?>
+
+                        <div class="col">
+                            <a href="#" class="btn btn-block btn-dark" onclick="askToCopy('<?php echo $fetch['id'];?>')">Copiar para suas atividades</a>
+                        </div>
+
+                        <?php } else { ?>
+
+                        <div class="col">
+                            <a href="#" class="btn btn-block btn-dark" onclick="askToMakePublic('<?php echo $fetch['id'];?>')">Disponibilizar para o público</a>
+                        </div>
+
+                        <?php } ?>
+                    </div>
+                </div>
+
+            </div><!--card-body-->
+
+        </div><!--card-->
+
+    <?php } ?>
+
+</div><!--card colums-->
+
+<!--pagination -->
+    <div class="conteiner-pagination">                        
+        
+        <ul class="pagination">
+            <!--botton previous -->
+            
+            <?php
+                if ($num_pages <= 1) {
+            ?>
+
+            <li class="voltar-avancar">
+                <a class="page-link" href="#">
+                    <img src="/SEIA/media/numero-pagina/pag-anterior.svg"></img>
+                </a>
+            </li>
+            
+            <li class="page-item disabled"><a class="page-link" href="#">1</a></li>
+            
+            <li class="voltar-avancar">
+                <a class="page-link" href="#">
+                    <img src="/SEIA/media/numero-pagina/prox-pag.svg"></img>
+                </a>
+            </li>
+
+            <?php
+                } else {
+                    if (($data['page'] - 1) <= 0) { ?>
+                        
+                        <li class="voltar-avancar">
+                            <a class="page-link" href="#">
+                                <img src="/SEIA/media/numero-pagina/pag-anterior.svg"></img>
+                            </a>
+                        </li>
+                        
+                    <?php } else { ?>
+
+                        <li class="voltar-avancar">
+                            <a class="page-link" href="index.php?query=<?php echo $query; ?>&page=<?php echo ($data['page'] - 1); ?>">
+                                <img src="/SEIA/media/numero-pagina/pag-anterior.svg"></img>
+                            </a>
+                        </li>
+
+                    <?php }
+
+                    /* listing */
+                    
+                        $i = 0;
+
+                        for ($i = (($data['page'] - 5)); $i < (($data['page'] + 5)); $i++) {
+                            if (($data['page'] - 1) == $i) {
+                            //curr page
+                    
                     ?>
 
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#"><?php echo ($i + 1); ?></a>
+                        </li>
+
                         <?php
-                        while($fetch = mysqli_fetch_assoc($res))
-                        { 
-                        ?>
-                            <div class="card text-white bg-warning border-dark" id="<?php echo $fetch['id'];?>">
-                                <img class="card-img-top rounded  img-thumbnail" src="<?php 
-                                    require_once ROOTPATH . '/activity/ActivityController.php';
-                                    $ac = new ActivityController();
-                                    if($fetch['owner_id']=='_REPOSITORY'){
-                                        echo $ac->getThumbnail(['id'=>$fetch['id'],'rep'=>true]);
-                                    }
-                                    else
-                                        echo $ac->getThumbnail(['id'=>$fetch['id']]);
-                                ?>">
-                                <h4 class="card-header border-dark"><?php echo $fetch['name'];?></h4>   
-                                <div class="card-body">
-                                 
-                                 
-                                 <!--<h4 class="card-text">Antecedente</h4>
-                                 <p class="card-text"><?php echo $fetch['antecedent'];?></p>
-                                 
-                                 <h4 class="card-text">Comportamento Esperado</h4>
-                                    <p class="card-text"><?php echo $fetch['behavior'];?></p>
-                                 <h4 class="card-text">Consequência</h4>
-                                    <p class="card-text"><?php echo $fetch['consequence'];?></p> 
-                                    
-                                    <cite class="card-text"><?php echo $fetch['category'];?></cite>-->
-                                    <span class="badge badge-secondary"><?php echo $DIFFICULTY[$fetch['difficulty']];?></span>     
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <?php if($repository=='false'){ ?>
+                    
+                            } else {
 
-                                            
-                                            <div class="col-6"><a href="index.php?action=edit&id=<?php echo $fetch['id'];?>" class="btn btn-block btn-dark">Editar</a></div>
-                                            <div class="col-6"><a href="#" class="btn btn-block btn-dark" onclick="removeActivity('<?php echo $fetch['id'];?>')">Excluir</a></div>
-                                            <?php } else { ?>
-
-                                                <div class="col"><a href="index.php?action=run&id=<?php echo $fetch['id'];?>" class="btn btn-block btn-dark">Visualizar</a></div>
-                                            <?php } ?>
-
-                                            
-                                            
-                                            
-
-                                        </div>
-                                        <div class="row mt-1">
-                                        <?php if($repository=='true'){ ?>
-                                                <div class="col"><a href="#" class="btn btn-block btn-dark" onclick="askToCopy('<?php echo $fetch['id'];?>')">Copiar para suas atividades</a></div>
-                                            <?php }
-                                            else{ ?>
-                                                <div class="col"><a href="#" class="btn btn-block btn-dark" onclick="askToMakePublic('<?php echo $fetch['id'];?>')">Disponibilizar para o público</a></div>
-
-                                            <?php
-                                            }
-                                            ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php
-                        }
+                                if ($i >= 0 && $i <= (($num_pages))) {
+                        
                         ?>
 
+                        <li class="page-item">
+                            <a class="page-link" href="index.php?query=<?php echo $query; ?>&page=<?php echo ($i + 1); ?>"><?php echo ($i + 1); ?></a>
+                        </li>
+                        
+                        <?php }}}
 
+            /*botton next*/
+
+                if (($data['page']) >= $num_pages) { ?>
                 
+                    <li class="voltar-avancar">
+                        <a class="page-link" href="#">
+                            <img src="/SEIA/media/numero-pagina/prox-pag.svg"></img>
+                        </a>
+                    </li>
                     
-                    <!--pagination -->
-                    <div class="row mt-3">
-                <div class="col">
-
+                <?php } else { ?>
                     
-                <ul class="pagination">
-                                <!--botton previous -->
-                                <?php
-                                if ($num_pages <= 1) {
-                                ?>
-                                    <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
-                                    <li class="page-item  disabled"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item disabled"><a class="page-link" href="#">Próxima</a></li>
-                                <?php
-                                } else {
-                                    if (($data['page'] - 1) <= 0) { ?>
-                                        <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
-                                    <?php
-                                    } else { ?>
-                                        <li class="page-item "><a class="page-link" href="index.php?query=<?php echo $query; ?>&page=<?php echo ($data['page'] - 1); ?>">Anterior</a></li>
-                                        <?php
-                                    }
-
-                                    /* listing */
-                                    $i = 0;
-
-                                    for ($i = (($data['page'] - 5)); $i < (($data['page'] + 5)); $i++) {
-                                        if (($data['page'] - 1) == $i) {
-                                            //curr page
-                                        ?>
-                                            <li class="page-item disabled"><a class="page-link" href="#"><?php echo ($i + 1); ?></a></li>
-                                        <?php
-                                        } else {
-                                            if ($i >= 0 && $i <= (($num_pages))) {
-                                            ?>
-                                                <li class="page-item"><a class="page-link" href="index.php?query=<?php echo $query; ?>&page=<?php echo ($i + 1); ?>"><?php echo ($i + 1); ?></a></li>
-                                        <?php
-
-                                            }
-                                        }
-                                    }
-
-                                    /*botton next*/
-                                    if (($data['page']) >= $num_pages) { ?>
-                                        <li class="page-item disabled"><a class="page-link" href="#">Próxima</a></li>
-                                    <?php
-                                    } else { ?>
-                                        <li class="page-item "><a class="page-link" href="index.php?query=<?php echo $query; ?>&page=<?php echo ($data['page'] + 1); ?>">Próxima</a></li>
-                                    <?php
-
-                                    }                            
-                                }                           
-                                    ?>
-                            </ul>
-                </div>
-            </div>
+                    <li class="voltar-avancar">
+                        <a class="page-link" href="index.php?query=<?php echo $query; ?>&page=<?php echo ($data['page'] + 1); ?>">
+                            <img src="/SEIA/media/numero-pagina/prox-pag.svg"></img>
+                        </a>
+                    </li>
                     
-                    
-                    
-                    
-                    
-                </div>
-            </div>
-        </div>
-    
-
-    <div id='help' style="position: absolute; top:5px; right: 30px;" >
-    <button class='btn btn-block btn-lg btn-warning' onclick="showHelp()"><i class="fas fa-question"></i></button>
-
+                <?php }}?>
+                                    
+        </ul>
+        
     </div>
+
 </div>
+        
+        <!--botão de ajuda-->                                    
+        <!--div id='help' style="position: absolute; top:5px; right: 30px;" >
+            <button class='btn btn-block btn-lg btn-warning' onclick="showHelp()">
+                <i class="fas fa-question"></i>
+            </button>
+        </div-->
 
 <script>
 function askToCopy(id){
