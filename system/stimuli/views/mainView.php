@@ -32,13 +32,56 @@
     }
 </script>
 
-<div class="row">
-    <div class="col">
-        <div class="container">
-            <div class="row">
-                <div class="col">
+<div class="container">
 
-                    <div class="row mt-3">
+    <div class="header-titulo" id="meus-est">
+
+        <div class="desenho-e-texto">
+
+            <div class="texto">
+
+                <h1>Meus estímulos</h1>
+
+                <div class="barra-horizontal"></div>
+
+                <p class="texto-conteudo">Visualize estímulos adicionados por você, ou aquelas adicionados do Repositório.</p>
+
+            </div>
+
+            <div class="desenho"><img src="/SEIA/media/vetores/meus_estimulos.svg"></img></div>
+
+        </div>
+
+    </div>
+
+</div><!--container-->
+
+<div class="corpo">
+
+    <div class="barra-pesquisa">    
+
+        <a id="tutoNovaAtividade"class="btn btn-warning btn-lg btn-block border-dark text-white" href="index.php?action=new"><p><img src="/SEIA/media/barra_pesquisa/adicionar_branco.svg">Novo estímulo</p></a>
+                            
+        <a class="btn hide-btn" href="index.php?action=repository"><p>Buscar no repositório</p></a>
+
+        <!-- filtrar -->    
+                                
+        <form autocomplete="off" class="form mt-1" action="index.php?action=filter_form" method="post">
+            <input hidden id="rep" name="rep" type="rep"  value="<?php echo $repository?>">
+
+            <div class="form-group" id="pesquisar">
+                <button type="submit" class="btn btn-outline-success form-control">
+                    <img src="/SEIA/media/barra_pesquisa/pesquisa.svg"></img>
+                </button> 
+
+                <input class="form-control mr-sm-2" id="search" name="query" type="query" placeholder="PESQUISE POR ESTÍMULOS" aria-label="Search" value="">
+            </div>
+                                        
+        </form>
+                            
+    </div>
+
+                    <!--<div class="row mt-3">
                         <div class="col">
                             <h3> <a class="btn btn-primary btn-lg btn-block" href="<?php echo BASE_URL . "/stimuli?action=newStimuliForm" ?>"><?php echo $lang["new_stimuli"]; ?> </a></h3>
                         </div>
@@ -65,190 +108,226 @@
 
                             </form>
                         </div>
-                    </div>
+                    </div>-->
 
-                    <!-- Results appear here -->
+<!-- Results appear here -->
 
-                    <div class="row mt-4">
-                        <div class="col">
-                            <?php
-                                require_once ROOTPATH . '/utils/DBAccess.php';
+    <div class="card-columns">
 
-                                if (isset($data['query'])) {
-                                    $query = $data['query'];
-                                }
+        <?php
+            require_once ROOTPATH . '/utils/DBAccess.php';
 
-                                ///gets results.
-                                $s_page = $data['page'] - 1;
-                                if ($s_page < 0) {
-                                    $s_page = 0;
-                                }
-                                $results_per_page = 12;
+            if (isset($data['query'])) {
+                $query = $data['query'];
+            }
 
-                                $offset = $s_page * $results_per_page;
-                                $limit  = $results_per_page;
+            ///gets results.
+            $s_page = $data['page'] - 1;
+            if ($s_page < 0) {
+                $s_page = 0;
+            }
 
+            $results_per_page = 12;
+            $offset = $s_page * $results_per_page;
+            $limit  = $results_per_page;
 
-                                $sController = new StimuliController();
-                                $s_data = ['query' => $query, 'offset' => $offset, 'resultsAsArray' => true];
-                                $res = $sController->get_as_json($s_data);
-                                $num_res = $res['total'];
+            $sController = new StimuliController();
+            $s_data = ['query' => $query, 'offset' => $offset, 'resultsAsArray' => true];
+            $res = $sController->get_as_json($s_data);
+            $num_res = $res['total'];
 
+            $num_pages = intdiv($num_res, $results_per_page);
 
+            if (($num_pages * $results_per_page) < $num_res) {
+                $num_pages = $num_pages + 1;
+            }
 
-                                $num_pages = intdiv($num_res, $results_per_page);
+            foreach ($res['results'] as $fetch) {
 
-                                if (($num_pages * $results_per_page) < $num_res) {
-                                    $num_pages = $num_pages + 1;
-                                }
-                            ?>
+                if ($fetch['type'] == "image") {
+        ?>
+                                        
+        <div class="card" id="card-<?php echo $fetch['id']; ?>"><!--estimulo imagem-->
 
-                            <div class="card-columns">
-                                <?php
-                                    foreach ($res['results'] as $fetch) {
-
-
-                                        if ($fetch['type'] == "image") {
-                                ?>
-                                       
-                                       <div class="card" id="card-<?php echo $fetch['id']; ?>">
-                                            <img class="card-img-top" src="<?php echo $fetch['data']; ?>" alt="Card image cap">
-                                            <div class="card-body">
-                                                <h4 class="card-title"><?php echo $fetch['name']; ?></h4>
-
-                                                <p class="card-text"><?php echo $fetch['description']; ?></p>
-                                                <?php if ($fetch['owner_id'] != 'pub') { ?>
-                                                    <button class="btn btn-block btn-danger" onclick="askToRemoveStimuli('<?php echo $fetch['id']; ?>')">Remover</button>
-                                                <?php } ?>
-                                                <cite class="card-text">
-                                                    <?php
-                                                    for ($i = 0; $i < count($fetch['labels']); $i++) {
-                                                    ?>
-                                                        <span class="badge badge-secondary">
-                                                            <?php
-                                                            echo $fetch['labels'][$i];
-                                                            ?>
-                                                        </span>
-                                                    <?php
-                                                    }
-
-                                                    ?>
-                                                </cite>
-
-                                            </div>
-                                        </div>
-                                    <?php
-                                    } elseif ($fetch['type'] == 'audio') {
-                                    ?>
-                                        <div class="card" id="card-<?php echo $fetch['id']; ?>">
-                                            <audio controls>
-                                                <source src="<?php echo BASE_URL . $fetch['url']; ?>">
-                                            </audio>
-                                            <div class="card-body">
-                                                <h4 class="card-title"><?php echo $fetch['name']; ?></h4>
-                                                <p class="card-text"><?php echo $fetch['description']; ?></p>
-
-                                                <?php if ($fetch['owner_id'] != 'pub') { ?>
-                                                    <button class="btn btn-block btn-danger" onclick="askToRemoveStimuli('<?php echo $fetch['id']; ?>')">Remover</button>
-                                                <?php } ?>
-                                                <cite class="card-text">
-                                                    <?php
-                                                    for ($i = 0; $i < count($fetch['labels']); $i++) {
-                                                    ?>
-                                                        <span class="badge badge-secondary">
-                                                            <?php
-                                                            echo $fetch['labels'][$i];
-                                                            ?>
-                                                        </span>
-                                                    <?php
-                                                    }
-
-                                                    ?>
-                                                </cite>
-
-                                            </div>
-                                        </div>
-
-                                <?php
-
-                                    }
-                                }
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="card-img-top rounded img-thumbnail"><!--imagem-->
+                <div class="filtro"></div>
+                <img src="<?php echo $fetch['data']; ?>" alt="Card image cap"></img>
             </div>
 
-            <!-- Results appear here -->
+            <h4 class="card-header"><!--nome-->
+                <p><?php echo $fetch['name']; ?></p>
 
+                <div class="ver-mais">
+                    <div class="bolinha"></div>
+                    <div class="bolinha"></div>
+                    <div class="bolinha"></div>
+                </div>
+            </h4>
 
-            <!-- pagination -->
-            <div class="row mt-3">
-                <div class="col">
+            <div class="card-body"><!--descrição-->
+                                                            
+                <span class="badge badge-secondary"><?php echo $fetch['description']; ?></span>
 
-                    <ul class="pagination">
-                        <!--botton previous -->
+                <?php if ($fetch['owner_id'] != 'pub') { ?>
+                    <button class="btn btn-block btn-danger" onclick="askToRemoveStimuli('<?php echo $fetch['id']; ?>')">Remover</button>
+                <?php } ?>
+
+                <div class="categorias-estimulo"><!--categorias-->
+                    <?php for ($i = 0; $i < count($fetch['labels']); $i++) { ?>
+                    <p class="card-text badge badge-secondary"><?php echo $fetch['labels'][$i]; } ?></p>
+                </div>
+
+            </div><!--card body-->
+
+        </div><!--card-->
+
+        <?php } elseif ($fetch['type'] == 'audio') { ?>
+
+        <div class="card" id="card-<?php echo $fetch['id']; ?>"><!--estimulo audio-->
+
+            <div class="card-img-top rounded img-thumbnail"><!--thumbnail-->
+                <audio controls><source src="<?php echo BASE_URL . $fetch['url']; ?>"></audio>
+            </div>
+
+            <h4 class="card-title"><!--titulo-->
+                <p><?php echo $fetch['name']; ?></p>
+
+                <div class="ver-mais">
+                    <div class="bolinha"></div>
+                    <div class="bolinha"></div>
+                    <div class="bolinha"></div>
+                </div>
+            </h4>
+
+            <div class="card-body"><!--descrição-->
+                
+                <span class="badge badge-secondary"><?php echo $fetch['description']; ?></span>
+
+                <?php if ($fetch['owner_id'] != 'pub') { ?>
+                    <button class="btn btn-block btn-danger" onclick="askToRemoveStimuli('<?php echo $fetch['id']; ?>')">Remover</button>
+                <?php } ?>
+
+                <div class="categorias-estimulo"><!--categorias-->
+                    <p class="card-text badge badge-secondary">
+                        <?php for ($i = 0; $i < count($fetch['labels']); $i++) { echo $fetch['labels'][$i]; } ?>
+                    </p>
+                </div><!--categorias estimulo-->
+
+            </div>
+        </div><!--card-->
+
+        <?php }} ?>
+
+    </div><!--card columns-->
+
+<!-- Results appear here -->
+
+<!--pagination -->
+    <div class="conteiner-pagination">                        
+        
+        <ul class="pagination">
+            <!--botton previous -->
+            
+            <?php
+                if ($num_pages <= 1) {
+            ?>
+
+            <a class="page-link" href="#">
+                <li class="voltar-avancar">                
+                    <img src="/SEIA/media/numero-pagina/pag-anterior.svg"></img>
+                </li>
+            </a>
+            
+            <a class="page-link" href="#"><li class="page-item disabled">1</li></a>
+            
+            <a class="page-link" href="#">
+                <li class="voltar-avancar">                
+                    <img src="/SEIA/media/numero-pagina/prox-pag.svg"></img>                
+                </li>
+            </a>
+
+            <?php
+                } else {
+                    if (($data['page'] - 1) <= 0) { ?>
+                        
+                        <a class="page-link" href="#">
+                            <li class="voltar-avancar">                            
+                                <img src="/SEIA/media/numero-pagina/pag-anterior.svg"></img>
+                            </li>
+                        </a>
+                        
+                    <?php } else { ?>
+
+                        <a class="page-link" href="index.php?query=<?php echo $query; ?>&page=<?php echo ($data['page'] - 1); ?>">
+                            <li class="voltar-avancar">                            
+                                <img src="/SEIA/media/numero-pagina/pag-anterior.svg"></img>
+                            </li>
+                        </a>
+
+                    <?php }
+
+                    /* listing */
+                    
+                        $i = 0;
+
+                        for ($i = (($data['page'] - 5)); $i < (($data['page'] + 5)); $i++) {
+                            if (($data['page'] - 1) == $i) {
+                            //curr page
+                    
+                    ?>
+
+                        <a class="page-link" href="#">
+                            <li class="page-item disabled"><?php echo ($i + 1); ?></li>
+                        </a>
+
                         <?php
-                        if ($num_pages <= 1) {
+                    
+                            } else {
+
+                                if ($i >= 0 && $i <= (($num_pages))) {
+                        
                         ?>
-                            <li class="page-item disabled"><a class="page-link" href="#"><?php echo $lang["previous_page"]; ?></a></li>
-                            <li class="page-item  disabled"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item disabled"><a class="page-link" href="#"><?php echo $lang["next_page"]; ?></a></li>
-                            <?php
-                        } else {
 
-                            if (($data['page'] - 1) <= 0) { ?>
-                                <li class="page-item disabled"><a class="page-link" href="#"><?php echo $lang["previous_page"]; ?></a></li>
-                            <?php
-                            } else { ?>
-                                <li class="page-item "><a class="page-link" href="index.php?query=<?php echo $query; ?>&page=<?php echo ($data['page'] - 1); ?>"><?php echo $lang["previous_page"]; ?></a></li>
-                                <?php
-                            }
+                        
+                        <a class="page-link" href="index.php?query=<?php echo $query; ?>&page=<?php echo ($i + 1); ?>">
+                            <li class="page-item"><?php echo ($i + 1); ?></li>
+                        </a>
+                        
+                        <?php }}}
 
-                            /* listing */
-                            $i = 0;
+            /*botton next*/
 
-                            for ($i = (($data['page'] - 5)); $i < (($data['page'] + 5)); $i++) {
-                                if (($data['page'] - 1) == $i) {
-                                    //curr page
-                                ?>
-                                    <li class="page-item disabled"><a class="page-link" href="#"><?php echo ($i + 1); ?></a></li>
-                                <?php
-                                } else {
-                                    if($i>=0 && $i<=(($num_pages))){
-                                ?>
-                                    <li class="page-item"><a class="page-link" href="index.php?query=<?php echo $query; ?>&page=<?php echo ($i + 1); ?>"><?php echo ($i + 1); ?></a></li>
-                                <?php
-                                
-                                    }
-                                }
-                            }
-
-                            /*botton next*/
-                            if (($data['page']) >= $num_pages) { ?>
-                                <li class="page-item disabled"><a class="page-link" href="#"><?php echo $lang["next_page"]; ?></a></li>
-                            <?php
-                            } else { ?>
-                                <li class="page-item "><a class="page-link" href="index.php?query=<?php echo $query; ?>&page=<?php echo ($data['page'] + 1); ?>"><?php echo $lang["next_page"]; ?></a></li>
-                            <?php
-
-                            }                        
-                        }
-                            ?>
-
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id='help' style="position: absolute; top:5px; right: 30px;">
-    <button class='btn btn-block btn-lg btn-warning' onclick="showHelp()"><i class="fas fa-question"></i></button>
+                if (($data['page']) >= $num_pages) { ?>
+                
+                    <a class="page-link" href="#">
+                        <li class="voltar-avancar">
+                            <img src="/SEIA/media/numero-pagina/prox-pag.svg"></img>                        
+                        </li>
+                    </a>
+                    
+                <?php } else { ?>
+                    
+                    
+                    <a class="page-link" href="index.php?query=<?php echo $query; ?>&page=<?php echo ($data['page'] + 1); ?>">
+                        <li class="voltar-avancar">
+                            <img src="/SEIA/media/numero-pagina/prox-pag.svg"></img>                        
+                        </li>
+                    </a>
+                    
+                <?php }}?>
+                                    
+        </ul>
+        
+    </div><!--conteiner pagination-->
 
 </div>
-
+        
+        <!--botão de ajuda-->                                    
+        <!--div id='help' style="position: absolute; top:5px; right: 30px;" >
+            <button class='btn btn-block btn-lg btn-warning' onclick="showHelp()">
+                <i class="fas fa-question"></i>
+            </button>
+        </div-->
 
 <script>
     function askToRemoveStimuli(id) {

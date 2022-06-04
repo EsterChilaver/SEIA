@@ -1,8 +1,22 @@
-.modal {    
+.conteiner-modal {
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    box-sizing: border-box;
     position: fixed;
     background-color: white;
     box-shadow: 0px 3px 10px 0px #696969;
     display: none;
+    flex-direction: column;
     justify-content: space-around;
     align-content: center;
     border-radius: 10px;
@@ -47,7 +61,8 @@
     display: block;
     text-align: center;
     width: 100%;
-    margin-bottom: 15vh;
+    margin-bottom: 5vh;
+    text-transform: uppercase;
 }
 
     .modal h2 .barra-horizontal {
@@ -59,18 +74,30 @@
     }
 
 .modal form {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-end;
+    box-sizing: border-box;
     width: 80%;
     margin: 0 10%;
+    margin-top: 10vh;
 }
 
+    .modal .form-group {
+        box-sizing: border-box;
+    }
+
+    .modal input {
+        box-sizing: border-box;
+    }
+
 #recuperar-senha .form-control {
-    min-width: 92%;
+    min-width: 100%;
 }
 
 #recuperar-senha .form-group button {
     width: 60%;
-    margin: 5vh 20%;
+    margin: 2vh 20%;
 }
 
 .fundo-escuro {
@@ -86,3 +113,104 @@
 }
 
 @media (max-width: 999px) { #recuperar-senha {width: 70%;}}
+
+#trocar-avatar {/*janela modal para trocar foto de perfil do usuario*/
+    padding: 5vh;
+    min-width: 40vw;
+    max-height: 80vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+#trocar-avatar form {
+    box-sizing: border-box;
+    display: block;
+    margin-right: 0;
+    margin-left: 0;
+    width: 100%;
+}
+
+#trocar-avatar .input-group {
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 50vh;
+    margin-bottom: 3vh;
+    border-radius: 5px;
+    border: 2px solid #adb7ca;
+    overflow: hidden;
+}
+
+    #trocar-avatar input {
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    #trocar-avatar .input-group button {
+        padding: 1vh;
+        font-family: "Righteous";
+        text-transform: uppercase;
+        font-size: 10pt;
+        background: #eceff5;
+        color: #2a467a;
+        border: none;
+        border-radius: 0;
+        border-right: 2px solid #adb7ca;
+        transition: 1s;
+        cursor: pointer;
+    }
+
+        #trocar-avatar .input-group button:hover {
+            background: #adb7ca;;
+            transition: 1s;
+        }
+
+        #trocar-avatar .input-group #inp_fileName {
+            border: none;
+            border-radius: 0;
+            overflow: hidden;
+            padding: 1vh;
+            font-family: "Exo 2";
+            font-size: 10pt;
+            color: #4d4d4d;
+        }
+
+#trocar-avatar .container {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    max-height: 30vh;
+    box-sizing: border-box;
+    border: none;
+    margin-bottom: 3vh;
+}
+
+    #trocar-avatar .container img {
+        height: 100%;
+        border: none;
+    }
+
+#trocar-avatar .modal-footer {
+    display: block;
+    width: 100%;
+}
+
+#trocar-avatar .modal-footer button {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 10px;
+    font-family: "Righteous";
+    font-size: 14pt;
+    text-transform: uppercase;
+    color: white;
+    background: #2a467a;
+    cursor: pointer;
+    transition: 1s;
+}
+
+    #trocar-avatar .modal-footer button:hover {opacity: 0.7;}

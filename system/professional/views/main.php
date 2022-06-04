@@ -89,7 +89,7 @@ $user_id = $_SESSION['username'];
 </script>
 
 
-<form id="swapAvatarTemplate"class="d-none" enctype="multipart/form-data" autocomplete="off" action="" method="post">
+<!--<form id="swapAvatarTemplate"class="d-none" enctype="multipart/form-data" autocomplete="off" action="" method="post">
     
     <div class="input-group mb-3">
         <input name="student_id" id="student_id" type="text" hidden value="<?php echo $student_data['id'];?>">
@@ -107,16 +107,16 @@ $user_id = $_SESSION['username'];
         Selecione um arquivo.
     </div>
 
-</form>
+</form>-->
 
 <div class="row mt-3 mb-3">
     <div class="col-2 bg-secondary p-3">
         <div class="row" >
             <div class="col">
             <img class="img-fluid rounded " width="100%" height="auto" src="<?php echo BASE_URL;?>/data/user/<?php echo $user_id;?>/avatar.png">
-            <button onclick='selectAvatar()' class=" mt-1 btn btn-danger btn-lg btn-block border border-dark "type="button"> Trocar avatar </button>
-            <a href="<?php echo BASE_URL;?>/auth/index.php?action=changePassword" type="button" class="mt-2 mn-2 btn btn btn-block  btn-danger border border-dark"> Alterar senha </a>
-            <a href="<?php echo BASE_URL;?>/auth/index.php?action=logout" type="button" class="mt-2 mn-2 btn btn btn-block  btn-danger border border-dark"> Sair </a>
+            <!--<button onclick='selectAvatar()' class=" mt-1 btn btn-danger btn-lg btn-block border border-dark "type="button">Mudar foto de perfil</button>
+            <a href="<?php echo BASE_URL;?>/auth/index.php?action=changePassword" type="button" class="mt-2 mn-2 btn btn btn-block  btn-danger border border-dark">Alterar senha</a>
+            <a href="<?php echo BASE_URL;?>/auth/index.php?action=logout" type="button" class="mt-2 mn-2 btn btn btn-block  btn-danger border border-dark">Sair</a>-->
             </div>
         </div>
     </div>

@@ -100,13 +100,12 @@
     padding: 8vh 8vw;            
 }
 
-    #minhas-atv {/*degrade*/
-        background: linear-gradient(53deg, #324672 0%, #fa6fce 100%);
-        background-size: 150% 150%;
-        animation: muda-degrade 5s ease infinite;
-    }
-
-.header-titulo .texto {width: 45%;}
+.header-titulo .texto {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
 .header-titulo .barra-horizontal {
     margin: 0;
@@ -121,11 +120,35 @@
 }
 
 .header-titulo .desenho {
-    min-width: 51vw;
+    min-width: 50%;
+    height: 50vh;
     display: flex;
     justify-content: right;
 }
 
 .header-titulo img {
-    width: 100%;
+    min-width: 100%;
+    justify-content: right;
+}
+
+/*minhas atividades*/
+
+#minhas-atv {/*degrade*/
+    background: linear-gradient(53deg, #324672 0%, #fa6fce 100%);
+    background-size: 150% 150%;
+    animation: muda-degrade 5s ease infinite;
+}
+
+#meus-est {/*degrade*/
+    filter: saturate(80%);
+    background: rgb(221,57,203);
+    background: linear-gradient(48deg, rgba(221,57,203,1) 0%, rgba(255,123,63,1) 100%);
+    background-size: 150% 150%;
+    animation: muda-degrade 5s ease infinite;
+}
+
+#students {
+    background: rgb(221,156,57);
+    background: linear-gradient(48deg, rgba(221,156,57,1) 0%, rgba(217,92,232,1) 100%); 
+    animation: muda-degrade 5s ease infinite;
 }

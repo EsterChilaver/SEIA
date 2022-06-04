@@ -205,19 +205,46 @@ header {
         justify-content: center;
         align-items: center;
         border: 5px solid #fff;
+        cursor: pointer;
+    }
+
+    .icone-usuario .mais-usuario {
+        box-sizing: border-box;
+        position: absolute;
+        display: none;
+        width: 7vw;
+        height: 7vw;
+        z-index: 2;
+        padding: 3vh 0;        
+        transition: 1s;
+    }
+
+    .icone-usuario .mais-usuario .bolinha {
+        width: 1.5vh;
+        height: 1.5vh;
+        border-radius: 100%;
+        background: #fff;
+        transition: 1s;
     }
 
         .icone-usuario a img {
-            filter: saturate(50%);
+            filter: saturate(100%);
             width: 100%;
             transition: 1s;
         }
 
         .icone-usuario:hover a img {
-            filter: saturate(100%);
+            filter: saturate(20%) brightness(60%) contrast(60%);
             transition: 1s;
         }
 
+        .icone-usuario:hover .mais-usuario {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            transition: 1s;
+        }
 
 .mobile-menu {
     box-sizing: border-box;

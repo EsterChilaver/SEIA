@@ -5,6 +5,7 @@
     display: grid;
     grid-template-columns: 32% 32% 32%;
     justify-content: space-between;
+    margin-bottom: 3vh;
 }
 
 .card-columns .esconder {display: none;}
@@ -12,7 +13,8 @@
 .card-columns .card {/*cada um dos cards individualmente*/
     box-sizing: border-box;
     width: 100%;
-    height: 60vh;
+    min-height: 40vh;
+    max-height: 70vh;
     overflow: hidden;
     margin: 0;
     background: #fff;
@@ -22,7 +24,7 @@
 .card-columns h4 {
     display: flex;
     justify-content: space-between;
-    align-items: top;
+    align-items:flex-start;
     width: 100%;
     min-height: 18pt;
     font-family: "Righteous";
@@ -32,12 +34,20 @@
     text-transform: uppercase;
 }
 
-.card-columns h4 p {max-width: 80%; display: flex;}
+#cards-estudantes h4 {
+    height: 8vh;
+}
+
+.card-columns h4 p {
+    max-width: 70%;
+    display: flex;
+}
 
 .card .ver-mais {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-top: 1.5vh;
     margin-right: 3vh;
     width: 4vh;
     cursor: pointer;
@@ -57,31 +67,75 @@
     
     .card .ver-mais:hover .bolinha {box-shadow: 0px 7px 15px 0px #3a3a3a;}
 
+.card-columns .card-body {
+    display: inline-block;
+    width: 100%;
+    margin-top: 1vh;
+}
+
 .card-columns span {
+    width: 100%;
     font-family: "Exo 2";
-    font-size: 12pt;
+    font-size: 13pt;
     color: #4d4d4d;
 }
 
-    .card-img-top {/*conteiner da imagem*/
+.card-columns .card-body .categorias-estimulo {
+    width: 100%;
+    display: flex;
+    align-content: center;
+}
+
+    .card-columns .card-body .categorias-estimulo p.card-text {
+        width: auto;
+        max-height: 16pt;
+        box-sizing: border-box;
+        padding: 2px 4px;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 40vh;
-        overflow: hidden;
-        margin-bottom: 3vh;
-        box-shadow: 0px 3px 10px 0px #696969;
-        border-radius: 10px;
-        background: #fff;
-        filter: brightness(80%) contrast(80%);
-        transition: 1s;
+        font-family: "Exo 2";
+        font-size: 10pt;
+        font-style: italic;    
+        color: #fff;
+        background: #2a467a;
+        border-radius: 2px;
     }
 
-        .card-img-top:hover {filter: brightness(100%) contrast(100%);}
+    .card-columns .card-body .categorias-estimulo p {
+        font-family: "Exo 2";
+        font-size: 10pt;
+        margin-top: 1vh;
+        margin-right: 1vh;
+        margin-bottom: 0;
+        padding: 2px 4px;
+        color: #4d4d4d;
+    }
 
-        .card-img-top img {width: 100%;}
+    .card-columns .card-body .categorias-estimulo p input {
+        font-family: "Exo 2";
+        background: none;
+        border: none;
+        color: #4d4d4d;
+    }
 
-.card-columns .container-fluid {
-    display: none;
+.card-img-top {/*conteiner da imagem*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40vh;
+    overflow: hidden;
+    margin-bottom: 3vh;
+    box-shadow: 0px 3px 10px 0px #696969;
+    border-radius: 10px;
+    background: #fff;
+    filter: brightness(80%) contrast(80%);
+    transition: 1s;
 }
+
+    .card-img-top:hover {filter: brightness(100%) contrast(100%);}
+
+    .card-img-top img {width: 100%;}    
+
+.card-columns .container-fluid {display: none;}
+
+/*<input class="form-control" type="date" disabled value="<?php echo $fetch['birthday']; ?>">*/

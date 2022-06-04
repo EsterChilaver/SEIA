@@ -1,5 +1,4 @@
-<!-- Modal 
-<div id="modal" class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" >
+<!--div id="modal" class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" >
     <div id="modal-dialog " class="modal-dialog modal-xl " role="document" >
         <div class="modal-content" id="modal-content">
         <div class="modal-header">
@@ -17,10 +16,10 @@
         </div>
         </div>
     </div>
-</div>-->
+</div-->
 
 
-<!--<script>
+<script>
     
 function clickBodyCloseModal(e){
     return;
@@ -147,4 +146,4 @@ function showModal(title, message, acceptFunction=null,showConfirm=true,cancelFu
     document.body.appendChild(fade);
     mod.focus();
 }
-</script>-->
+</script>
