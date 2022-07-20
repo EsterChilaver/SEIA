@@ -141,12 +141,12 @@ class Activity {
         var w = this.canvas.width;
         var h = this.canvas.height;
         
-        if(h>w){
+     /*   if(h>w){
             var x = h;
             h = w;
             w = x;
                     
-        }
+        }*/
         var scale = [w/this._editorSize[0], h/this._editorSize[1]];
         console.log("SCALE  screen> " + w+":"+h);
         console.log("scale: "+scale[0]+":"+scale[1]);

@@ -65,26 +65,32 @@ class TextStimulus extends Stimulus{
     }    
     
     resize(scale){
+      
+      
+        if(scale[0]<scale[1]){
+            var scaleUtil = scale[0];
+            var difr = Math.abs((screen.height - scaleUtil*600))/2;
+       }else{
+            var scaleUtil = scale[1];
+            var difr = Math.abs((screen.width - scaleUtil*800))/2;
+       }
        
-        var scaleUtil = scale[1];
-        var difr = Math.abs((screen.width - scaleUtil*800))/2;
-
-
-        if (scale[0]<scale[1]){
-            
-            scaleUtil = scale[0];
-            difr = Math.abs((screen.height - scaleUtil*600))/2;
-        }
-
         this.fontSize = this.fontSize * scaleUtil;
         this.scale = scale;
+        var drawPos = [(this.renderImage.position[0]),(this.renderImage.position[1])];
 
-        var drawPos = [(this.renderImage.position[0]),(this.renderImage.position[1])];//+parseInt(this.fontSize)];
-       //var drawPos2 = [drawPos[0]*this.scale[0], drawPos[1]*1];
-        if (scale[0]>scale[1])
-            this.renderImage.position = [(drawPos[0]*scaleUtil + difr), drawPos[1]*scaleUtil]; //só se o escala de h < w
-        else
-            this.renderImage.position = [(drawPos[0]*scaleUtil), drawPos[1]*scaleUtil+difr];
+        if(scale[0]<scale[1]){
+            this.renderImage.position = [(drawPos[0]*scaleUtil ), drawPos[1]*scaleUtil + difr];
+        }else{
+            this.renderImage.position = [(drawPos[0]*scaleUtil + difr), drawPos[1]*scaleUtil];
+        }
+        //+parseInt(this.fontSize)];
+       
+        //var drawPos2 = [drawPos[0]*this.scale[0], drawPos[1]*1];
+       // if (scale[0]>scale[1])
+           // this.renderImage.position = [(drawPos[0]*scaleUtil + difr), drawPos[1]*scaleUtil]; //só se o escala de h < w
+       // else
+         //   this.renderImage.position = [(drawPos[0]*scaleUtil), drawPos[1]*scaleUtil+difr];
 
 
        //ctx.fillText(this.text, drawPos2[0],drawPos2[1]);
