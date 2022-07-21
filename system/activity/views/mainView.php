@@ -142,13 +142,13 @@ document.body.onload=function(){
                     }
 
                     $num_res = $db->query($SQL);
+                    
                     $num_res = mysqli_fetch_assoc($num_res);
                     $num_res = $num_res['total'];
                     $results_per_page = 12;
                     $num_pages = intdiv($num_res , $results_per_page);
-                    if( ($num_pages * $results_per_page) < $num_res)
-                        $num_pages = $num_pages + 1;
-                   
+                    if( ($num_pages * $results_per_page) < $num_res || $num_pages==0)
+                        $num_pages += 1;
 
                     ///gets results.
                     $s_page = $data['page']-1;
@@ -243,12 +243,16 @@ document.body.onload=function(){
                     
                     <!--pagination -->
                     <div class="row mt-3">
-                <div class="col">
+                        <div class="col">
 
-                    
-                <ul class="pagination">
+                            
+                         <ul class="pagination">
                                 <!--botton previous -->
                                 <?php
+                                if($data['page']==0){
+                                    $data['page']=1;
+                                }
+
                                 if ($num_pages <= 1) {
                                 ?>
                                     <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
@@ -256,6 +260,7 @@ document.body.onload=function(){
                                     <li class="page-item disabled"><a class="page-link" href="#">Próxima</a></li>
                                 <?php
                                 } else {
+                                    
                                     if (($data['page'] - 1) <= 0) { ?>
                                         <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
                                     <?php
@@ -274,7 +279,7 @@ document.body.onload=function(){
                                             <li class="page-item disabled"><a class="page-link" href="#"><?php echo ($i + 1); ?></a></li>
                                         <?php
                                         } else {
-                                            if ($i >= 0 && $i <= (($num_pages))) {
+                                            if ($i >= 0 && $i <= (($num_pages)-1)) {
                                             ?>
                                                 <li class="page-item"><a class="page-link" href="index.php?query=<?php echo $query; ?>&page=<?php echo ($i + 1); ?>"><?php echo ($i + 1); ?></a></li>
                                         <?php
