@@ -82,8 +82,20 @@ class Stimulus{
     }
     resize(scale){
         
-        this.renderImage.position = [this.renderImage.position[0]*scale[0],this.renderImage.position[1]*scale[1]];
-        this.renderImage.setSize([this.renderImage.size[0]*scale[0],this.renderImage.size[1]*scale[1]]);
+        
+        
+        if(scale[0]<scale[1]){
+            //this.renderImage.position = [this.renderImage.position[0]*scale[0],this.renderImage.position[1]*scale[0]];
+            var difr = Math.abs((screen.height - scale[0]*600))/2;
+            this.renderImage.setSize([this.renderImage.size[0]*scale[0],this.renderImage.size[1]*scale[0]]);
+            this.renderImage.position = [this.renderImage.position[0]*scale[0],this.renderImage.position[1]*scale[0]+ difr];
+        }else{
+           // this.renderImage.position = [this.renderImage.position[0]*scale[1],this.renderImage.position[1]*scale[1]];
+            var difr = Math.abs((screen.width - scale[1]*800))/2;
+            this.renderImage.setSize([this.renderImage.size[0]*scale[1],this.renderImage.size[1]*scale[1]]); 
+            this.renderImage.position = [this.renderImage.position[0]*scale[1] + difr,this.renderImage.position[1]*scale[1]];
+        }
+        
         
     }
 
@@ -91,11 +103,11 @@ class Stimulus{
         var w = this.instruction.activity.canvas.width;
         var h = this.instruction.activity.canvas.height;
         
-        if(h>w){
+       /* if(h>w){
             var x = h;
             h = w;
             w = x;
-        }
+        }*/
         var scale = [w/this.instruction.activity._editorSize[0], h/this.instruction.activity._editorSize[1]];
         this.renderImage.position = [newPosition[0]*scale[0],newPosition[1]*scale[1]];
     }
