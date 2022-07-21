@@ -83,7 +83,7 @@ $user_id = $_SESSION['username'];
                         $num_res = $num_res['total'];
                         $results_per_page = 12;
                         $num_pages = intdiv($num_res, $results_per_page);
-                        if (($num_pages * $results_per_page) < $num_res)
+                        if (($num_pages * $results_per_page) < $num_res || $num_pages==0)
                             $num_pages = $num_pages + 1;
 
 
@@ -193,9 +193,9 @@ $user_id = $_SESSION['username'];
                                             <li class="page-item disabled"><a class="page-link" href="#"><?php echo ($i + 1); ?></a></li>
                                             <?php
                                         } else {
-                                            if ($i >= 0 && $i <= (($num_pages))) {
+                                            if ($i >= 0 && $i <= (($num_pages)-1)) {
                                             ?>
-                                                <li class="page-item"><a class="page-link" href="index.php?query=<?php echo $query; ?>&page=<?php echo ($i + 1); ?>"><?php echo ($i + 1); ?></a></li>
+                                                <li class="page-item"><a class="page-link" href="index.php?action=student&query=<?php echo $query; ?>&page=<?php echo ($i + 1); ?>"><?php echo ($i + 1); ?></a></li>
                                         <?php
 
                                             }
