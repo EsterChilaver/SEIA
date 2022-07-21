@@ -186,7 +186,7 @@ if (isset($data['query']) && strlen($data['query']) > 0) {
                                             <li class="page-item disabled"><a class="page-link" href="#"><?php echo ($i + 1); ?></a></li>
                                         <?php
                                         } else {
-                                            if ($i >= 0 && $i <= (($num_pages))) {
+                                            if ($i >= 0 && $i <= (($num_pages)-1)) {
                                             ?>
                                                 <li class="page-item"><a class="page-link" href="index.php?query=<?php echo $query; ?>&page=<?php echo ($i + 1); ?>"><?php echo ($i + 1); ?></a></li>
                                         <?php
